@@ -30,6 +30,9 @@ const config = {
   issuerBaseURL: 'https://dev-aqyh6g1cz81cmqbm.us.auth0.com'
 };
 
+// auth router attaches /login, /logout, and /callback routes to the baseURL
+app.use(auth(config));
+
 app.get("/", (req, res) => {
   res.send("Hello, Talento!");
 });
