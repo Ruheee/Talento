@@ -6,6 +6,12 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 8000;
 
+// Point location of SSL certificate and key
+const options = {
+  key: fs.readFileSync('./localhost-key.pem'),
+  cert: fs.readFileSync('./localhost.pem'),
+};
+
 app.get("/", (req, res) => {
   res.send("Hello, Talento!");
 });
