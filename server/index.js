@@ -15,7 +15,7 @@ const options = {
 // Instantiate the HTTPS server
 https
   .createServer(options, app)
-  .listen(port, () => console.log(`Example app listening on port ${port}!`));
+  .listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));
 
 // Import the express-openid-connect module
 const { auth, requiresAuth } = require('express-openid-connect');
@@ -38,7 +38,6 @@ app.get('/', (req, res) => {
   res.send(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out');
 });
 
-
-app.listen(PORT, () => 
-  console.log(`Server running on port ${PORT}`)
-);
+app.get('/profile', requiresAuth(), (req, res) => {
+  res.send(JSON.stringify(req.oidc.user));
+});
