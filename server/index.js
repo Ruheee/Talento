@@ -2,7 +2,10 @@
 const https = require("https");
 const fs = require("fs");
 
+// Import the express module
 const express = require("express");
+
+// Instantiate an Express application and set the port number
 const app = express();
 const PORT = process.env.PORT || 8000;
 
