@@ -17,6 +17,19 @@ https
   .createServer(options, app)
   .listen(port, () => console.log(`Example app listening on port ${port}!`));
 
+// Import the express-openid-connect module
+const { auth, requiresAuth } = require('express-openid-connect');
+
+// Configure the auth provider
+const config = {
+  authRequired: false,
+  auth0Logout: true,
+  secret: 'a long, randomly-generated string stored in env',
+  baseURL: 'https://localhost:3000',
+  clientID: 'spvFR3hekTCoajKUwC1DinYBuimjO18z',
+  issuerBaseURL: 'https://dev-aqyh6g1cz81cmqbm.us.auth0.com'
+};
+
 app.get("/", (req, res) => {
   res.send("Hello, Talento!");
 });
