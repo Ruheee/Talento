@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
+    "reset": "psql -U talentodev -d talento_development < ./server/src/db/schema/create.sql && psql -U talentodev -d talento_development < ./server/src/db/schema/development.sql",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
