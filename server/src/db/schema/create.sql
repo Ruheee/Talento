@@ -1,10 +1,15 @@
+DROP TABLE IF EXISTS careers CASCADE;
 DROP TABLE IF EXISTS job_seekers CASCADE;
 DROP TABLE IF EXISTS employers CASCADE;
 DROP TABLE IF EXISTS messages CASCADE;
-DROP TABLE IF EXISTS favourites CASCADE;
-DROP TABLE IF EXISTS careers CASCADE;
-DROP TABLE IF EXISTS matches CASCADE;
 DROP TABLE IF EXISTS job_listings CASCADE;
+DROP TABLE IF EXISTS favourites CASCADE;
+DROP TABLE IF EXISTS matches CASCADE;
+
+CREATE TABLE careers (
+  id SERIAL PRIMARY KEY NOT NULL,
+  career_name VARCHAR(255) NOT NULL UNIQUE
+);
 
 CREATE TABLE job_seekers (
   id SERIAL PRIMARY KEY NOT NULL,
@@ -41,25 +46,6 @@ CREATE TABLE messages (
   time_stamp TIMESTAMP DEFAULT NOW()
 );
 
-CREATE TABLE favourites (
-  id SERIAL PRIMARY KEY NOT NULL,
-  job_seekers_id INTEGER REFERENCES job_seekers(id) ON DELETE CASCADE,
-  job_listings_id INTEGER REFERENCES job_listings(id) ON DELETE CASCADE
-);
-
-CREATE TABLE careers (
-  id SERIAL PRIMARY KEY NOT NULL,
-  career_name VARCHAR(255) NOT NULL UNIQUE
-);
-
-CREATE TABLE matches (
-  id SERIAL PRIMARY KEY NOT NULL,
-  job_seekers_id INTEGER REFERENCES job_seekers(id) ON DELETE CASCADE,
-  job_listings_id INTEGER REFERENCES job_listings(id) ON DELETE CASCADE,
-  seeker_status VARCHAR(255),
-  employer_status VARCHAR(255)
-);
-
 CREATE TABLE job_listings (
   id SERIAL PRIMARY KEY NOT NULL,
   employers_id INTEGER REFERENCES employers(id) ON DELETE CASCADE,
@@ -71,3 +57,18 @@ CREATE TABLE job_listings (
   skills VARCHAR(255),
   date_posted TIMESTAMP DEFAULT NOW()
 );
+
+CREATE TABLE favourites (
+  id SERIAL PRIMARY KEY NOT NULL,
+  job_seekers_id INTEGER REFERENCES job_seekers(id) ON DELETE CASCADE,
+  job_listings_id INTEGER REFERENCES job_listings(id) ON DELETE CASCADE
+);
+
+CREATE TABLE matches (
+  id SERIAL PRIMARY KEY NOT NULL,
+  job_seekers_id INTEGER REFERENCES job_seekers(id) ON DELETE CASCADE,
+  job_listings_id INTEGER REFERENCES job_listings(id) ON DELETE CASCADE,
+  seeker_status VARCHAR(255),
+  employer_status VARCHAR(255)
+);
+
