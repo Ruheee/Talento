@@ -1,9 +1,12 @@
-// Import builtin NodeJS modules to instantiate the service
+const express = require("express");
+
+// Import the HTTPS module and File System module
 const https = require("https");
 const fs = require("fs");
 
-// Import the express module
-const express = require("express");
+// Import middleware modules
+const cors = require("cors");
+const bodyParser = require("body-parser");
 
 // Instantiate an Express application and set the port number
 const app = express();
@@ -35,6 +38,9 @@ const config = {
 
 // auth router attaches /login, /logout, and /callback routes to the baseURL
 app.use(auth(config));
+// middleware
+app.use(cors());
+app.use(bodyParser.json());
 
 // req.isAuthenticated is provided from the auth router
 app.get('/', (req, res) => {
