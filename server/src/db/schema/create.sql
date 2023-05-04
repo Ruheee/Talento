@@ -19,7 +19,6 @@ CREATE TABLE job_seekers (
   password VARCHAR(255) NOT NULL,
   career_id INTEGER REFERENCES careers(id) ON DELETE CASCADE,
   about_me TEXT,
-  cover_letter TEXT,
   resume VARCHAR(255),
   skills VARCHAR(255),
   location VARCHAR(255),
