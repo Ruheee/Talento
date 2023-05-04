@@ -21,7 +21,8 @@ CREATE TABLE job_seekers (
   about_me TEXT,
   resume VARCHAR(255),
   skills VARCHAR(255),
-  location VARCHAR(255),
+  city VARCHAR(255),
+  country VARCHAR(255),
   social_media VARCHAR(255)
 );
 
@@ -33,7 +34,8 @@ CREATE TABLE employers (
   career_id INTEGER REFERENCES careers(id) ON DELETE CASCADE,
   company_logo VARCHAR(255),
   company_description TEXT,
-  location VARCHAR(255),
+  city VARCHAR(255),
+  country VARCHAR(255),
   social_media VARCHAR(255)
 );
 
