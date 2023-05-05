@@ -51,6 +51,4 @@ app.get('/profile', requiresAuth(), (req, res) => {
   res.send(JSON.stringify(req.oidc.user));
 });
 
-app.get('/api/test', function (req, res) {
-  res.json({ message: 'Hello from the backend!' });
-});
+

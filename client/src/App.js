@@ -1,12 +1,11 @@
 import React from 'react';
-import TestComponent from './components/TestComponent';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      {/* Add your TestComponent here */}
-      <TestComponent />
+      {/* Add your main components here */}
+      <p>Welcome to my app!</p>
     </div>
   );
 }
