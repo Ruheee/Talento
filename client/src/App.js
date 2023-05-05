@@ -1,12 +1,11 @@
 import React from 'react';
-import TestComponent from './components/TestComponent';
+import Navbar from './components/Navbar/Navbar';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      {/* Add your TestComponent here */}
-      <TestComponent />
+      <Navbar />
     </div>
   );
 }
