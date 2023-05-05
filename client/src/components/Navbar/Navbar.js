@@ -7,6 +7,9 @@ const Navbar = () => {
       <div className="title-container">
         <h1 className="title">Talento</h1>
       </div>
+      <div className="search-container">
+        <input type="text" className="search-input" placeholder="Search..." />
+      </div>
       <div className="buttons-container">
         <a href="#" className="nav-link">Careers</a>
         <a href="#" className="nav-link">Messages</a>
