@@ -4,12 +4,12 @@
   background-position: center;
   background-repeat: no-repeat;
   min-height: 100vh;
-  padding-top: 100px; /* Add padding to make space for the fixed navbar */
+  padding-top: 100px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Align the text to the left-hand side of the page */
-  justify-content: center; /* Center the content vertically */
-  padding-left: 2%; /* Add some space from the left edge of the page */
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 2%;
 }
 
 .center-text {
@@ -43,8 +43,7 @@
   font-size: 25px;
   line-height: 30px;
   color: #505F98;
-  margin-top: 20px; /* Add some space between the two texts */
-
+  margin-top: 20px;
 }
 
 .group-image {
@@ -56,4 +55,38 @@
   height: auto;
   max-width: 250%;
   max-height: 250%;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .begin-journey-text {
+    font-size: 40px;
+    line-height: 100%;
+    margin-bottom: 10px;
+  }
+
+  .description-text {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .center-text {
+    padding-left: 20px;
+    padding-bottom: 150px;
+  }
+
+  .group-image {
+    position: relative;
+    right: auto;
+    top: auto;
+    bottom: auto;
+    max-width: 100%;
+    max-height: 100%;
+    margin-top: 20px;
+  }
+
+  .home-page-container {
+    align-items: center;
+    text-align: center;
+  }
 }
