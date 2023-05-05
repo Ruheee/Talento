@@ -1,0 +1,59 @@
+.home-page-container {
+  background-color: #A1CDFF;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  padding-top: 100px; /* Add padding to make space for the fixed navbar */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align the text to the left-hand side of the page */
+  justify-content: center; /* Center the content vertically */
+  padding-left: 2%; /* Add some space from the left edge of the page */
+}
+
+.center-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 700px;
+  padding-left: 50px;
+  padding-bottom: 350px;
+}
+
+.begin-journey-text {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 80px;
+  line-height: 110%;
+  letter-spacing: -1.56092px;
+  color: #FFFFFF;
+  margin-bottom: 20px;
+}
+
+.highlighted {
+  color: yellow;
+}
+
+.description-text {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 550;
+  font-size: 25px;
+  line-height: 30px;
+  color: #505F98;
+  margin-top: 20px; /* Add some space between the two texts */
+
+}
+
+.group-image {
+  position: absolute;
+  right: 4.8%;
+  top: 32.91%;
+  bottom: 55.44%;
+  width: auto;
+  height: auto;
+  max-width: 250%;
+  max-height: 250%;
+}
