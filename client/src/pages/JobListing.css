@@ -33,6 +33,19 @@
   padding-top: 10px
 }
 
+.row-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: stretch;
+  width: inherit;
+}
+
+.row-container > div {
+  flex-grow: 1;
+}
+
 .content-header {
   font-family: 'Poppins', sans-serif;
   font-weight: 900;
