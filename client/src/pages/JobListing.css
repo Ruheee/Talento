@@ -86,3 +86,13 @@
   box-sizing: border-box;
 }
 
+.star {
+  color: #fffb00;
+  background: #5F7470;
+  border: 1px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 14px 15px;
+  gap: 5px;
+}
