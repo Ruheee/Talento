@@ -12,6 +12,7 @@ const JobListing = () => {
       <div>
         <div className="card-body">
           <img className="logo" src={`${process.env.PUBLIC_URL}/logo-placeholder.png`} width={135} />
+          <header className='job-title'>Job Title</header>
           <header className='company-name'>Company Name</header>
           <section className='about'>About the job</section>
           <article className='company-description'>
