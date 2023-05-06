@@ -21,6 +21,11 @@ const JobListing = () => {
             Phasellus congue commodo libero a fringilla. Curabitur magna leo, sodales in dolor sed, blandit varius neque. Duis blandit lectus a augue congue, vel lobortis erat vestibulum. Proin a arcu id tortor accumsan tincidunt ac eu erat. Aliquam sit amet eros eu felis faucibus pulvinar. Vestibulum aliquam, ipsum ullamcorper blandit dictum, enim purus facilisis purus, id elementum erat massa a enim.
           </article>
         </div>
+        <div className='action-buttons'>
+          <button className='not-interested'>Not Interested</button>
+          <button className='star'><i class="fas fa-star fa-lg" ></i></button>
+          <button className='interested'>Interested</button>
+        </div>
       </div>
     </div>
   );
