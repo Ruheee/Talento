@@ -9,11 +9,9 @@ const JobListing = () => {
       backgroundImage: `url(${process.env.PUBLIC_URL}/Background.png)`,
     }}
   >
-      <br />
-      <br />
-      <br />
-      <br />
-      <h1>Welcome to Job Listing!</h1>
+      <div className="card">
+        <img className="logo" src={`${process.env.PUBLIC_URL}/logo192.png`} width={135}/>
+      </div>
     </div>
   );
 };
