@@ -15,7 +15,7 @@ const JobListing = () => {
           <header className='job-title'>Job Title</header>
           <header className='company-name'>Company Name</header>
           <section className='content-header'>About the job</section>
-          <article className='company-description'>
+          <article className='content-body'>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget quam sodales, porta libero quis, sollicitudin massa. Nam ornare, dui ac hendrerit posuere, sapien justo mollis mi, eget hendrerit tortor augue in risus. Ut quis mauris eros. Sed rhoncus nisl non urna accumsan pharetra. Aliquam vel pulvinar libero.
             <br />
             <br />
