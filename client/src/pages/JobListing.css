@@ -1,0 +1,13 @@
+.job-listing-container {
+  background-color: #A1CDFF;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  padding-top: 100px; /* Add padding to make space for the fixed navbar */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align the text to the left-hand side of the page */
+  justify-content: center; /* Center the content vertically */
+  padding-left: 2%; /* Add some space from the left edge of the page */
+}
