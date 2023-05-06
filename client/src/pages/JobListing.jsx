@@ -1,6 +1,6 @@
 import React from 'react';
   
-const Job_Listing = () => {
+const JobListing = () => {
   return (
     <div
     className="job_listing"
@@ -17,4 +17,4 @@ const Job_Listing = () => {
   );
 };
   
-export default Job_Listing;
+export default JobListing;
