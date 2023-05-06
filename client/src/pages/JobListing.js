@@ -10,7 +10,7 @@ const JobListing = () => {
     }}
   >
       <div className="card">
-        <img className="logo" src={`${process.env.PUBLIC_URL}/logo192.png`} width={135}/>
+        <img className="logo" src={`${process.env.PUBLIC_URL}/logo192.png`} width={135} />
       </div>
     </div>
   );
