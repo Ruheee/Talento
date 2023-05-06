@@ -77,6 +77,13 @@
   padding: 14px 40px;
   gap: 5px;
   box-sizing: border-box;
+  /* Add mouse press effect */
+  transition: all 0.2s;
+}
+
+.not-interested:active {
+transform: translateY(2px);
+box-shadow: 2px 2px 0px #000000;
 }
 
 .interested {
@@ -89,6 +96,13 @@
   padding: 14px 40px;
   gap: 5px;
   box-sizing: border-box;
+  /* Add mouse press effect */
+  transition: all 0.2s;
+}
+
+.interested:active {
+  transform: translateY(2px);
+  box-shadow: 2px 2px 0px #000000;
 }
 
 .star {
@@ -100,4 +114,11 @@
   box-sizing: border-box;
   padding: 14px 15px;
   gap: 5px;
+  /* Add mouse press effect */
+  transition: all 0.2s;
+}
+
+.star:active {
+  transform: translateY(2px);
+  box-shadow: 2px 2px 0px #000000;
 }
