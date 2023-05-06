@@ -55,3 +55,9 @@
   text-align: justify;
   text-justify: inter-word;
 }
+
+.action-buttons {
+  padding: 25px;
+  display: flex;
+  justify-content: space-between;
+}
