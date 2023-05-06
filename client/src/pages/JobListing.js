@@ -4,7 +4,7 @@ import './JobListing.css';
 const JobListing = () => {
   return (
     <div
-    className="job-listing-container"
+    className="card-container"
     style={{
       backgroundImage: `url(${process.env.PUBLIC_URL}/Background.png)`,
     }}
