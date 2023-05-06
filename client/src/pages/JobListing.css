@@ -38,3 +38,9 @@
   align-self: flex-start;
   padding: 25px 25px 10px 25px;
 }
+
+.company-name {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  font-size: 16px;
+}
