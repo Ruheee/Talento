@@ -1,9 +1,10 @@
 import React from 'react';
+import './JobListing.css';
   
 const JobListing = () => {
   return (
     <div
-    className="job_listing"
+    className="job-listing-container"
     style={{
       backgroundImage: `url(${process.env.PUBLIC_URL}/Background.png)`,
     }}
