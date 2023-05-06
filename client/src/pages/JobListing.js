@@ -9,6 +9,7 @@ const JobListing = () => {
       backgroundImage: `url(${process.env.PUBLIC_URL}/Background.png)`,
     }}
     >
+      <div>
         <div className="card-body">
           <img className="logo" src={`${process.env.PUBLIC_URL}/logo192.png`} width={135} />
           <header className='company-name'>Company Name</header>
@@ -19,6 +20,7 @@ const JobListing = () => {
             <br />
             Phasellus congue commodo libero a fringilla. Curabitur magna leo, sodales in dolor sed, blandit varius neque. Duis blandit lectus a augue congue, vel lobortis erat vestibulum. Proin a arcu id tortor accumsan tincidunt ac eu erat. Aliquam sit amet eros eu felis faucibus pulvinar. Vestibulum aliquam, ipsum ullamcorper blandit dictum, enim purus facilisis purus, id elementum erat massa a enim.
           </article>
+        </div>
       </div>
     </div>
   );
