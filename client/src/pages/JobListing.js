@@ -21,6 +21,28 @@ const JobListing = () => {
             <br />
             Enim tortor at auctor urna nunc id cursus metus aliquam. Aliquet risus feugiat in ante metus. Sed augue lacus viverra vitae congue eu consequat ac felis. Volutpat blandit aliquam etiam erat velit scelerisque in. Consequat mauris nunc congue nisi vitae suscipit tellus mauris.
           </article>
+          <div className='row-container'>
+            <div>
+              <section className='content-header'>Salary</section>
+              <article className='content-body'>
+                $$$
+              </article>
+              <section className='content-header'>Skills</section>
+              <article className='content-body'>
+                Skills 1, Skills 2, Skills 3
+              </article>
+            </div>
+            <div>
+              <section className='content-header'>Location</section>
+              <article className='content-body'>
+                Toronto, ON
+              </article>
+              <section className='content-header'>Date Posted</section>
+              <article className='content-body'>
+                DD - MM - YYYY
+            </article>
+            </div>
+          </div>
         </div>
         <div className='action-buttons'>
           <button className='not-interested'>Not Interested</button>
