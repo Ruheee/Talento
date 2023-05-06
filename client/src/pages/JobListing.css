@@ -73,3 +73,16 @@
   gap: 5px;
   box-sizing: border-box;
 }
+
+.interested {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  background: #BCE784;
+  border: 1px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  border-radius: 4px;
+  padding: 14px 40px;
+  gap: 5px;
+  box-sizing: border-box;
+}
+
