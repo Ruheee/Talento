@@ -1,4 +1,7 @@
 import React from "react";
+import "./styles/App.scss";
+
+
 import Navbar from "./components/Navbar/Navbar";
 import HomePage from "./pages/HomePage";
 import "./styles/App.scss";
@@ -7,6 +10,7 @@ import JobListing from './pages/JobListing';
 import JobSeeker from './pages/JobSeeker';
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import Messages from "./pages/Messages"
 
 
 function App() {
@@ -23,5 +27,6 @@ function App() {
     </Router>
   );
 }
+
 
 export default App;
