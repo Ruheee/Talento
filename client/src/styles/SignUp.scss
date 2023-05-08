@@ -1,6 +1,4 @@
-
-
-.login-background{
+.register-background{
   @font-face {
     font-family: 'Outfit', sans-serif;
     src: url(../../public/Outfit-VariableFont_wght.ttf);
@@ -9,7 +7,6 @@
   margin: 0 30%;
   display: flex;
   flex-direction: column;
-  padding: 100px 0 0 0;
   height: 100vh;
   font-family: 'Outfit', sans-serif;
   overflow: hidden;
@@ -20,7 +17,7 @@
     font-weight: 800;
   }
 
-  .login---btn{
+  .register---btn{
     margin: 25px 25%;
     padding: 20px;
     background-color: #0B6EFE;
@@ -50,7 +47,7 @@
     text-underline-position: below;
   }
 
-  .signUpWithGoogle{
+  .registerUpWithGoogle{
     margin: 10px;
     img{
       margin: 0 20px;
@@ -62,10 +59,7 @@
       margin: 20px 15px;
     }
   }
-  
-  img{
-    margin-top: 29px;
-  }
+
   
 }
 
