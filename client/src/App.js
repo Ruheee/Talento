@@ -10,10 +10,10 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      {/* <HomePage /> */}
+      <HomePage />
       {/* Add your TestComponent here */}
       <TestComponent />
-      {/* <Login /> */}
+      <Login />
       <SignUp />
     </div>
   );
