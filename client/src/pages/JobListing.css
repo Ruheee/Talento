@@ -1,0 +1,136 @@
+.card-container {
+  background-color: #A1CDFF;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  min-height: 100vh;
+  padding-top: 100px; /* Add padding to make space for the fixed navbar */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Align items to the center of the page */
+  justify-content: center; /* Center the content vertically */
+  padding-left: 2%; /* Add some space from the left edge of the page */
+}
+
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  width: 452px;
+  height: 538px;
+  
+  background: #FFFFFF;
+  border-radius: 20px;
+
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.55);
+  
+}
+
+.logo {
+  padding-top: 10px
+}
+
+.row-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: stretch;
+  width: inherit;
+}
+
+.row-container > div {
+  flex-grow: 1;
+}
+
+.content-header {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  font-size: 10px;
+  align-self: flex-start;
+  padding: 20px 25px 10px 25px;
+}
+
+.content-body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  text-align: justify;
+  text-justify: inter-word;
+}
+.company-name {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  padding-bottom: 10px;
+}
+
+.job-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  font-size: 16px;
+}
+
+.action-buttons {
+  padding: 25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.not-interested {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  background: #FE6D73;
+  border: 1px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  border-radius: 4px;
+  padding: 14px 40px;
+  gap: 5px;
+  box-sizing: border-box;
+  /* Add mouse press effect */
+  transition: all 0.2s;
+}
+
+.not-interested:active {
+transform: translateY(2px);
+box-shadow: 2px 2px 0px #000000;
+}
+
+.interested {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  background: #BCE784;
+  border: 1px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  border-radius: 4px;
+  padding: 14px 40px;
+  gap: 5px;
+  box-sizing: border-box;
+  /* Add mouse press effect */
+  transition: all 0.2s;
+}
+
+.interested:active {
+  transform: translateY(2px);
+  box-shadow: 2px 2px 0px #000000;
+}
+
+.star {
+  color: #fffb00;
+  background: #5F7470;
+  border: 1px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 14px 15px;
+  gap: 5px;
+  /* Add mouse press effect */
+  transition: all 0.2s;
+}
+
+.star:active {
+  transform: translateY(2px);
+  box-shadow: 2px 2px 0px #000000;
+}
