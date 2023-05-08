@@ -1,18 +1,16 @@
 import React from 'react';
 import TestComponent from './components/TestComponent';
 import './styles/App.scss';
-import LogIn from './pages/LogIn';
+import Login from './pages/Login';
 import SignUp from './pages/SignUp';
-import Messages from './pages/Messages'
 
 function App() {
   return (
     <div className="App">
       {/* Add your TestComponent here */}
       <TestComponent />
-      <LogIn />
+      <Login />
       <SignUp />
-      <Messages /> 
     </div>
   );
 }
