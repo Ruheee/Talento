@@ -1,10 +1,9 @@
 import React from 'react';
 import Navbar from './components/Navbar/Navbar';
 import HomePage from './components/Homepage/HomePage';
-import './App.css';
 import TestComponent from './components/TestComponent';
 import './styles/App.scss';
-import Login from './pages/Login';
+import Login from './pages/LogIn';
 import SignUp from './pages/SignUp';
 
 function App() {
