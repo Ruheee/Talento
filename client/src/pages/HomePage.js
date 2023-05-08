@@ -1,5 +1,5 @@
 import React from 'react';
-import './HomePage.css';
+import '../styles/HomePage.scss';
 
 const HomePage = () => {
   const backgroundImage = `${process.env.PUBLIC_URL}/Background.png`;
