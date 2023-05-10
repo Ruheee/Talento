@@ -38,9 +38,7 @@ module.exports = function application(
   app.use(helmet());
   app.use(bodyparser.json());
 
-  app.use("/api", days(db));
-  app.use("/api", appointments(db, actions.updateAppointment));
-  app.use("/api", interviewers(db));
+  app.use("/api", job_seeker(db));
 
   if (ENV === "development" || ENV === "test") {
     Promise.all([
