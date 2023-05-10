@@ -1,18 +1,19 @@
+// Express Server
+const express = require("express");
+const app = express();
+
+// Modules
 const fs = require("fs");
 const path = require("path");
 
-const express = require("express");
+// Middlewares
 const bodyparser = require("body-parser");
 const helmet = require("helmet");
 const cors = require("cors");
 
-const app = express();
-
+// Import Routes
 const db = require("./db");
-
-const days = require("./routes/days");
-const appointments = require("./routes/appointments");
-const interviewers = require("./routes/interviewers");
+const job_seeker = require("./routes/job_seeker");
 
 function read(file) {
   return new Promise((resolve, reject) => {
