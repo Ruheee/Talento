@@ -40,7 +40,7 @@ module.exports = function application(
 
   app.use("/api", job_seeker(db));
 
-  if (ENV === "development" || ENV === "test") {
+  if (ENV === "development") {
     Promise.all([
       read(path.resolve(__dirname, `db/schema/create.sql`)),
       read(path.resolve(__dirname, `db/schema/${ENV}.sql`))
