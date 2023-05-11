@@ -1,3 +1,26 @@
+## How to run server and instantiate database:
+
+1. Install dependencies
+
+   ```
+   npm install
+   ```
+
+2. Run server
+
+   ```
+   npm start
+   ```
+
+3. Instantiate database
+
+   ```
+   Go to: localhost:8005/api/debug/reset
+   ```
+
+   This will instantiate the database with the default data.
+
+
 ## Generating self-signed SSL certificate and key on local machine
 
 1. Install mkcert (only once) 
