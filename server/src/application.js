@@ -13,7 +13,13 @@ const cors = require("cors");
 
 // Import Routes
 const db = require("./db");
-const job_seeker = require("./routes/job_seekers");
+const job_seekers = require("./routes/job_seekers");
+const favourites = require("./routes/favourites");
+const messages = require("./routes/messages");
+const employers = require("./routes/employers");
+const matches = require("./routes/matches");
+const job_listings = require("./routes/job_listings");
+const careers = require("./routes/careers");
 
 function read(file) {
   return new Promise((resolve, reject) => {
@@ -38,7 +44,13 @@ module.exports = function application(
   app.use(helmet());
   app.use(bodyparser.json());
 
-  app.use("/api", job_seeker(db));
+  app.use("/api", job_seekers(db));
+  app.use("/api", favourites(db));
+  app.use("/api", messages(db));
+  app.use("/api", employers(db));
+  app.use("/api", matches(db));
+  app.use("/api", job_listings(db));
+  app.use("/api", careers(db));
   app.get("/", (req, res) => {
     res.send("Hello World!");
   })
