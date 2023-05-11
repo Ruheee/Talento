@@ -13,7 +13,7 @@ const cors = require("cors");
 
 // Import Routes
 const db = require("./db");
-const job_seeker = require("./routes/job_seeker");
+const job_seeker = require("./routes/job_seekers");
 
 function read(file) {
   return new Promise((resolve, reject) => {
