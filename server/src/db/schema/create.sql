@@ -42,35 +42,36 @@ CREATE TABLE employers (
 
 CREATE TABLE messages (
   id SERIAL PRIMARY KEY NOT NULL,
-  job_seekers_id INTEGER REFERENCES job_seekers(id) ON DELETE CASCADE,
-  employers_id INTEGER REFERENCES employers(id) ON DELETE CASCADE,
+  job_seeker_id INTEGER REFERENCES job_seekers(id) ON DELETE CASCADE,
+  employer_id INTEGER REFERENCES employers(id) ON DELETE CASCADE,
   message TEXT NOT NULL,
   time_stamp TIMESTAMP DEFAULT NOW()
 );
 
 CREATE TABLE job_listings (
   id SERIAL PRIMARY KEY NOT NULL,
-  employers_id INTEGER REFERENCES employers(id) ON DELETE CASCADE,
+  employer_id INTEGER REFERENCES employers(id) ON DELETE CASCADE,
   career_id INTEGER REFERENCES careers(id) ON DELETE CASCADE,
   job_title VARCHAR(255) NOT NULL,
   job_description TEXT NOT NULL,
   salary VARCHAR(255) NOT NULL,
-  location VARCHAR(255),
+  city VARCHAR(255),
+  country VARCHAR(255),
   skills VARCHAR(255),
   date_posted TIMESTAMP DEFAULT NOW(),
-  isClosed? BOOLEAN DEFAULT false
+  isClosed BOOLEAN DEFAULT false
 );
 
 CREATE TABLE favourites (
   id SERIAL PRIMARY KEY NOT NULL,
-  job_seekers_id INTEGER REFERENCES job_seekers(id) ON DELETE CASCADE,
-  job_listings_id INTEGER REFERENCES job_listings(id) ON DELETE CASCADE
+  job_seeker_id INTEGER REFERENCES job_seekers(id) ON DELETE CASCADE,
+  job_listing_id INTEGER REFERENCES job_listings(id) ON DELETE CASCADE
 );
 
 CREATE TABLE matches (
   id SERIAL PRIMARY KEY NOT NULL,
-  job_seekers_id INTEGER REFERENCES job_seekers(id) ON DELETE CASCADE,
-  job_listings_id INTEGER REFERENCES job_listings(id) ON DELETE CASCADE,
+  job_seeker_id INTEGER REFERENCES job_seekers(id) ON DELETE CASCADE,
+  job_listing_id INTEGER REFERENCES job_listings(id) ON DELETE CASCADE,
   seeker_status VARCHAR(255),
   employer_status VARCHAR(255)
 );
