@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/JobListing.scss';
   
-const JobListing = () => {
+const JobListing = (props) => {
   return (
     <div
     className="card-container"
@@ -12,41 +12,36 @@ const JobListing = () => {
       <div>
         <div className="card-body">
           <img className="logo" src={`${process.env.PUBLIC_URL}/logo-placeholder.png`} width={135} />
-          <header className='job-title'>Job Title</header>
-          <header className='company-name'>Company Name</header>
+          <header className='job-title'>{props.jobTitle}</header>
+          <header className='company-name'>{props.employer}</header>
           <section className='content-header'>About the job</section>
-          <article className='content-body'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo nec. Venenatis tellus in metus vulputate eu scelerisque.
-            <br />
-            <br />
-            Enim tortor at auctor urna nunc id cursus metus aliquam. Aliquet risus feugiat in ante metus. Sed augue lacus viverra vitae congue eu consequat ac felis. Volutpat blandit aliquam etiam erat velit scelerisque in. Consequat mauris nunc congue nisi vitae suscipit tellus mauris.
-          </article>
+          <article className='content-body'>{props.jobDescription}</article>
           <div className='row-container'>
             <div>
               <section className='content-header'>Salary</section>
               <article className='content-body'>
-                $$$
+                ${props.salary}
               </article>
               <section className='content-header'>Skills</section>
               <article className='content-body'>
-                Skills 1, Skills 2, Skills 3
+                {props.skills}
               </article>
             </div>
             <div>
               <section className='content-header'>Location</section>
               <article className='content-body'>
-                Toronto, ON
+                {props.city}, {props.country}
               </article>
               <section className='content-header'>Date Posted</section>
               <article className='content-body'>
-                DD - MM - YYYY
+                {props.datePosted}
             </article>
             </div>
           </div>
         </div>
         <div className='action-buttons'>
           <button className='not-interested'>Not Interested</button>
-          <button className='star'><i class="fas fa-star fa-lg" ></i></button>
+          <button className='star'><i className="fas fa-star fa-lg" ></i></button>
           <button className='interested'>Interested</button>
         </div>
       </div>
