@@ -39,6 +39,9 @@ module.exports = function application(
   app.use(bodyparser.json());
 
   app.use("/api", job_seeker(db));
+  app.get("/", (req, res) => {
+    res.send("Hello World!");
+  })
 
   if (ENV === "development") {
     Promise.all([
