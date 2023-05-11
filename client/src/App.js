@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import "./styles/App.scss";
 
 
@@ -14,6 +15,12 @@ import Messages from "./pages/Messages"
 
 
 function App() {
+  useEffect(() => {
+    axios.get("/api/job_listings").then(response => {
+      setJobSeeker(response.data);
+    });
+  }, []);
+  
   return (
     <Router>
       <Navbar />
