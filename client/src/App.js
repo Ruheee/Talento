@@ -50,6 +50,7 @@ function App() {
         <Route path="/job_seeker" element={<JobSeeker />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/messages" element={<Messages />} />
       </Routes>
     </Router>
   );

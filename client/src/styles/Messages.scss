@@ -1,0 +1,134 @@
+.messages--view--container{
+  box-sizing: border-box;
+  height: 92vh;
+  margin-top: 88px;
+  display: flex;
+  flex-direction: row;
+  background: url(../../public/Messages-BG.png); 
+  background-size: cover;
+  @font-face {
+    font-family: 'Outfit', sans-serif;
+    src: url(../../public/Outfit-VariableFont_wght.ttf);
+  }
+  font-family: 'Outfit', sans-serif;
+  
+  aside {
+    background-color: #EEEEEE;
+    overflow-x: hidden;
+    width: 22%;
+    span {
+      font-weight: 800;
+      display: flex;
+      justify-content: center;
+      margin: 5px 0;
+    }
+  }
+  .matches--list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 100px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    .match--avatar--name {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px 15px;
+      img {
+        border-radius: 100%;
+        width: 50px;
+        margin-bottom: 5px;
+      }
+      &:hover{
+        color: grey;
+        cursor: pointer;
+      }
+    }
+  }
+
+.message--list {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    overflow: hidden;
+    
+    span {
+      text-align: center;
+      background-color: #DDD78D;
+      border-radius: 20px;
+      margin: 10px;
+      padding: 10px;
+      font-weight: 800;
+    }
+
+    .messanger--info {
+      height: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-bottom: 0.5px solid grey;
+      padding: 0 5px;
+      &:hover{
+        color: grey;
+        opacity: 95%;
+        cursor: pointer;
+      }
+
+      img {
+        width: 60px;
+        margin: 10px;
+        border-radius: 5px;
+      }
+      
+      p {
+        font-weight: 800;
+        margin-bottom: 2px;
+      }
+     
+    }
+  }
+
+.message--input--container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  iframe {
+    border: none;
+    height: 90%;
+  }
+  
+  .input--field{
+    background-color: #EEEEEE;
+    padding: 50px;
+  }
+
+  input {
+    border: none;
+    padding: 25px;
+    width: 90%;
+    border-radius: 20px;
+  }
+
+  button {
+    border: none;
+    height: 100%;
+    margin: 0 10px;
+    padding: 24px;
+    background-color: #DDD78D;
+    border-radius: 5px;
+
+    img{
+      margin-right: 5px;
+    }
+
+    &:hover{
+      color: grey;
+      cursor: pointer;
+    }
+  }
+}
+}
+
