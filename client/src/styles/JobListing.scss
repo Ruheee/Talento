@@ -1,3 +1,9 @@
+#root {
+  cursor: url("https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png")
+      39 39,
+    auto;
+}
+
 .card-container {
   background-color: #A1CDFF;
   background-size: cover;
@@ -12,7 +18,6 @@
   justify-content: center; /* Center the content vertically */
   padding-left: 2%; /* Add some space from the left edge of the page */
 }
-
 
 .card-body {
   display: flex;
@@ -133,4 +138,8 @@ box-shadow: 2px 2px 0px #000000;
 .star:active {
   transform: translateY(2px);
   box-shadow: 2px 2px 0px #000000;
+}
+
+.no-more {
+  height: 100%;
 }
