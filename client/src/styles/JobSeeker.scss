@@ -1,3 +1,9 @@
+#root {
+  cursor: url("https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png")
+      39 39,
+    auto;
+}
+
 .card-container {
   background-color: #A1CDFF;
   background-size: cover;
@@ -13,7 +19,6 @@
   padding-left: 2%; /* Add some space from the left edge of the page */
 }
 
-
 .card-body {
   display: flex;
   flex-direction: column;
@@ -27,6 +32,14 @@
 
   box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.55);
 
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: inherit;
 }
 
 .profile {
