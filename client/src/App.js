@@ -12,7 +12,7 @@ import JobSeeker from './pages/JobSeeker';
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Messages from "./pages/Messages"
-
+import { getUnmatchedItems, randomIndex } from "./helpers/selectors";
 
 function App() {
   const [jobSeeker, setJobSeeker] = useState({
