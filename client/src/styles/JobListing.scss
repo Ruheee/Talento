@@ -11,26 +11,49 @@
   align-items: center; /* Align items to the center of the page */
   justify-content: center; /* Center the content vertically */
   padding-left: 2%; /* Add some space from the left edge of the page */
-}
 
+  transition: transform 0.3s ease-out; /* Add transition effect */
+  position: relative; /* For swipe effect */
+
+}
 
 .card-body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
   width: 452px;
   height: 538px;
-  
   background: #FFFFFF;
   border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  transform-origin: center bottom;
+  cursor: pointer;
 
-  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.55);
-  
+  &:active {
+    transform: scale(0.98);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23);
+    cursor: grabbing;
+  }
+
+  &.swiping-right, &.swiping-left {
+    opacity: 0;
+    transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.8s ease;
+  }
+
+  &.swiping-right {
+    transform: translateX(30%) rotate(20deg);
+  }
+
+  &.swiping-left {
+    transform: translateX(-30%) rotate(-20deg);
+  }
+
+  user-select: none;
 }
 
 .logo {
-  padding-top: 10px
+  padding-top: 10px;
+  pointer-events: none;
 }
 
 .row-container {
@@ -114,6 +137,7 @@ box-shadow: 2px 2px 0px #000000;
 
 .interested:active {
   transform: translateY(2px);
+  box-shadow: 2px 2;
   box-shadow: 2px 2px 0px #000000;
 }
 
