@@ -11,7 +11,11 @@ import JobSeeker from './pages/JobSeeker';
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Messages from "./pages/Messages"
-import { getUnmatchedItems, randomIndex } from "./helpers/selectors";
+import {
+  getUnmatchedJobListings,
+  getUnmatchedJobSeekers,
+  randomIndex,
+} from "./helpers/selectors";
 
 function App() {
   const [state, setState] = useState({
@@ -20,71 +24,80 @@ function App() {
     jobSeekers: {},
     jobSeekersIndex: 0,
   });
+  
+  const jobListingsAPI = "/api/job_listings";
+  const jobSeekersAPI = "/api/job_seekers";
+  const matchesAPI = "/api/matches";
 
-  const jobListingAPI = "/api/job_listings";
-  const jobSeekerAPI = "/api/job_seekers";
-
-  const interested = (api, seeker=false, employer=false, query, index) => {
-    axios
-      .post("/api/matches", {
-        // replace job_seeker_id with the user's id
-        job_seeker_id: 1,
-        job_listing_id: jobListingData?.id,
-        seeker_status: seeker,
-        employer_status: employer,
-      })
-      .then(() => {
-        getUnmatchedItems(api, "/api/matches").then(
-          (unmatchedItems) => {
-            setState({
-              ...state,
-              [query]: unmatchedItems,
-              [index]: randomIndex(unmatchedItems),
-            });
-          }
-        );
-      });
-  };
-
-  const notInterested = (api, query, index) => {
-    getUnmatchedItems(api, "/api/matches").then(
-      (unmatchedItems) => {
+  const jobListingData = state.jobListings[state.jobListingsIndex];
+  const jobSeekerData = state.jobSeekers[state.jobSeekersIndex];
+  
+  const jobListingsAPICall = () => {
+    getUnmatchedJobListings(jobListingsAPI, matchesAPI).then(
+      (unmatchedJobListing) => {
         setState({
           ...state,
-          [query]: unmatchedItems,
-          [index]: randomIndex(unmatchedItems),
+          jobListings: unmatchedJobListing,
+          jobListingsIndex: randomIndex(unmatchedJobListing),
         });
       }
     );
   };
 
-  // resets database -- remove before production
-  const reset = (api, query, index) => {
-    axios.get("api/debug/reset").then(() => {
-      getUnmatchedItems(api, "/api/matches").then(
-        (unmatchedJobListings) => {
-          setState({
-            ...state,
-            [query]: unmatchedJobListings,
-            [index]: randomIndex(unmatchedJobListings),
-          });
-        }
-      );
-    });
+  const jobSeekersAPICall = () => {
+    getUnmatchedJobSeekers(jobSeekersAPI, matchesAPI).then(
+      (unmatchedJobSeeker) => {
+        setState({
+          ...state,
+          jobSeekers: unmatchedJobSeeker,
+          jobSeekersIndex: randomIndex(unmatchedJobSeeker),
+        });
+      }
+    );
   };
 
-  const jobListingData = state.jobListings[state.jobListingsIndex];
-  const jobSeekerData = state.jobSeekers[state.jobSeekersIndex];
+  const seekerInterested = () => {
+    axios
+      .post(matchesAPI, {
+        // replace job_seeker_id with the user's id
+        job_seeker_id: null,
+        job_listing_id: jobListingData?.id,
+        seeker_status: true,
+        employer_status: false,
+      })
+      .then(() => {
+        jobListingsAPICall();
+      });
+  };
+
+  const employerInterested = () => {
+    axios
+      .post(matchesAPI, {
+        // replace job_seeker_id with the user's id
+        job_seeker_id: jobSeekerData?.id,
+        job_listing_id: null,
+        seeker_status: false,
+        employer_status: true,
+      })
+      .then(() => {
+        jobSeekersAPICall();
+      });
+  };
+
+  // resets database -- remove before production
+  const reset = (APICall) => {
+    axios.get("api/debug/reset").then(() => APICall());
+  };
 
   useEffect(() => {
     const fetchData = async () => {
-      const unmatchedJobListings = await getUnmatchedItems(
-        "/api/job_listings",
-        "/api/matches"
+      const unmatchedJobListings = await getUnmatchedJobListings(
+        jobListingsAPI,
+        matchesAPI
       );
-      const unmatchedJobSeekers = await getUnmatchedItems(
-        "/api/job_seekers",
-        "/api/matches"
+      const unmatchedJobSeekers = await getUnmatchedJobSeekers(
+        jobSeekersAPI,
+        matchesAPI
       );
 
       setState((prevState) => ({
@@ -109,9 +122,9 @@ function App() {
           element={
             <JobListing
               data={jobListingData}
-              interested={() => interested(jobListingAPI, true, false, "jobListings", "jobListingsIndex")}
-              notInterested={() => notInterested(jobListingAPI, "jobListings", "jobListingsIndex")}
-              reset={() => reset(jobListingAPI, "jobListings", "jobListingsIndex")}
+              interested={seekerInterested}
+              notInterested={jobListingsAPICall}
+              reset={() => reset(jobListingsAPICall)}
             />
           }
         />
@@ -120,9 +133,9 @@ function App() {
           element={
             <JobSeeker
               data={jobSeekerData}
-              interested={() => interested(jobSeekerAPI, false, true, "jobSeekers", "jobSeekersIndex")}
-              notInterested={() => notInterested(jobSeekerAPI, "jobSeekers", "jobSeekersIndex")}
-              reset={() => reset(jobSeekerAPI, "jobSeekers", "jobSeekersIndex")}
+              interested={employerInterested}
+              notInterested={jobSeekersAPICall}
+              reset={() => reset(jobSeekersAPICall)}
             />
           }
         />
