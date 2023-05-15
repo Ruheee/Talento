@@ -33,7 +33,7 @@ function App() {
   const datePosted = data?.date_posted;
   const employer = data?.employer_id;
   
-  console.log(jobTitle)
+
 
   useEffect(() => {
     axios.get("/api/job_listings").then(response => {

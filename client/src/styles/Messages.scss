@@ -15,12 +15,12 @@
   aside {
     background-color: #EEEEEE;
     overflow-x: hidden;
-    width: 22%;
+    width: 32%;
     span {
       font-weight: 800;
       display: flex;
       justify-content: center;
-      margin: 5px 0;
+      margin: 8px 0;
     }
   }
   .matches--list {
@@ -41,6 +41,7 @@
         border-radius: 100%;
         width: 50px;
         margin-bottom: 5px;
+        
       }
       &:hover{
         color: grey;
@@ -95,27 +96,51 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  iframe {
+  overflow: hidden;
+  .message--board {
     border: none;
-    height: 90%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    .message--container {
+      border: 1px solid red;
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      
+      .username--message {
+        div{
+          font-size: 16px;
+        }
+      }
+      img{
+        width: 45px;
+        height: auto;
+        border-radius: 25px;
+        margin: 5px;
+      }
+    }
   }
   
   .input--field{
     background-color: #EEEEEE;
-    padding: 50px;
+    padding: 50px 0 50px 55px;
+    
   }
 
   input {
     border: none;
     padding: 25px;
-    width: 90%;
+    width: 80%;
     border-radius: 20px;
+    
   }
 
   button {
     border: none;
     height: 100%;
-    margin: 0 10px;
+    margin-left: 30px;
     padding: 24px;
     background-color: #DDD78D;
     border-radius: 5px;
@@ -129,6 +154,6 @@
       cursor: pointer;
     }
   }
-}
+ }
 }
 
