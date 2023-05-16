@@ -2,7 +2,7 @@
 import Navbar from "../components/Navbar/Navbar";
 import "../styles/Messages.scss";
 import "../styles/index.scss";
-import MatchList from "../components/MatchesList";
+import MatchList from "../components/MatchList";
 import MessageList from "../components/MessageList";
 import Login from "../pages/Login";
 
@@ -20,6 +20,13 @@ export default function Messages() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [room, setRoom] = useState([]);
+  const [newMessage, setNewMessage] = useState({
+    // Obj will take in author info, and message send to abckend and see if you can retreive all emssages
+    job_seeker:"3",
+    employer_id: "4",
+    messages: input,
+    date: Date.now()
+  });
 
   useEffect(() => {
     axios.get("/api/matches").then((res) => {
@@ -27,16 +34,39 @@ export default function Messages() {
     });
   }, []);
 
+  const getMatchesInfo = () => {
+    room.map((r) => {
+      return r;
+    });
+  };
+
   const joinRoom = () => {
     // Map through room state
     room.map((r) => {
-      console.log(r.id)
       // If both these conditions are true, set the room number to the id of the match
-      if (r.seeker_status === true && r.employer_status === true) {
+      if (r.seeker_status === "true" && r.employer_status === "true") {
+        console.log("clickable");
         socket.emit("join_room", r.id);
       }
     });
   };
+
+  const handleClick = () => {
+    return axios
+      .post("/api/messages", {
+        job_seeker: "4",
+        employer_id: "3",
+        message: "Hello",
+        time_stamp: Date.now(),
+      })
+      .then((res) => {
+        setNewMessage(res.data);
+      })
+      .catch ((error) => {
+        console.log("erroe", error)
+      })
+  };
+
 
   useEffect(() => {
     // Receive message event
@@ -63,7 +93,7 @@ export default function Messages() {
       {isAuthenticated && (
         <section className="messages--view--container">
           <aside className="match--message--list">
-            <MatchList />
+            <MatchList joinRoom={joinRoom} handleClick={handleClick} />
             <MessageList />
           </aside>
           <div className="message--input--container">
