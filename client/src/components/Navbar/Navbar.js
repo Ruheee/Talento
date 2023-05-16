@@ -6,6 +6,7 @@ import Logout from '../LogoutBtn';
 
 const Navbar = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
+  const { email, picture } = user || {};
 
   return (
     <div className="navbar">
@@ -19,6 +20,8 @@ const Navbar = () => {
         <a href="#" className="nav-link">Careers</a>
         <a href="https://localhost:3006/messages" className="nav-link">Messages</a>
         <a href="#" className="nav-link">Freelance</a>
+        <img src={picture} alt={email} className="avatar" />
+        <span className="nav-link">{email}</span>
         {!isAuthenticated && <a href="https://localhost:3006/login" className="login-button">Login</a>}
         {user && <Logout />}
       </div>
