@@ -4,7 +4,7 @@ import "../styles/Messages.scss";
 import "../styles/index.scss";
 import MatchList from "../components/MatchList";
 import MessageList from "../components/MessageList";
-import Login from "../pages/Login";
+import Login from "../pages/LogIn";
 
 // Import from react library
 import { useEffect, useState } from "react";
