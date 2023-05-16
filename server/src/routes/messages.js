@@ -9,5 +9,16 @@ module.exports = db => {
     });
   });
 
+  router.post("/messages", (req, res) => {
+    db.query(
+      `SELECT * FROM messages`
+    ).then(({ rows: messages }) => {
+      console.log(res.json(messages));
+    });
+  })
+
   return router;
 };
+
+
+

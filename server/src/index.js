@@ -3,7 +3,39 @@ const ENV = require("./environment");
 
 const app = require("./application")(ENV);
 const server = require("http").Server(app);
+const cors = require("cors");
+const { Server } = require("socket.io")
 
+app.use(cors())
+
+const io = new Server(server, {
+  cors: {
+    origin: "https://localhost:3006",
+    methods: ["GET", "POST"]
+  }
+})
+
+io.on('connection', (socket) => {
+  console.log('A user connected');
+
+  // Listen for 'chat message' event
+  socket.on('chat_message', (msg) => {
+    console.log('Message:', msg);
+    // Broadcast the message to all connected clients
+    io.emit('chat_message', msg);
+  });
+
+  // Join a room
+  socket.on("join_room", (data) => {
+    socket.join(data)
+    console.log(`user with ID: ${socket.id} joined room: ${data} `)
+  })
+
+  // Disconnect event
+  socket.on('disconnect', () => {
+    console.log('A user disconnected');
+  });
+});
 
 server.listen(PORT, () => {
   console.log(`Listening on port ${PORT} in ${ENV} mode.`);

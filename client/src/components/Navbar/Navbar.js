@@ -1,7 +1,12 @@
 import React from 'react';
 import './Navbar.css';
+import { useAuth0 } from "@auth0/auth0-react";
+import Logout from '../LogoutBtn';
+
 
 const Navbar = () => {
+  const { user, isAuthenticated, isLoading } = useAuth0();
+
   return (
     <div className="navbar">
       <div className="title-container">
@@ -12,12 +17,13 @@ const Navbar = () => {
       </div>
       <div className="buttons-container">
         <a href="#" className="nav-link">Careers</a>
-        <a href="#" className="nav-link">Messages</a>
+        <a href="https://localhost:3006/messages" className="nav-link">Messages</a>
         <a href="#" className="nav-link">Freelance</a>
-        <a href="#" className="login-button">Login</a>
+        {!isAuthenticated && <a href="https://localhost:3006/login" className="login-button">Login</a>}
+        {user && <Logout />}
       </div>
     </div>
   );
-}
+};
 
 export default Navbar;
