@@ -25,7 +25,6 @@ export default function Messages() {
     job_seeker:"3",
     employer_id: "4",
     messages: input,
-    date: Date.now()
   });
 
   useEffect(() => {
@@ -54,9 +53,9 @@ export default function Messages() {
   const handleClick = () => {
     return axios
       .post("/api/messages", {
-        job_seeker: "4",
-        employer_id: "3",
-        message: "Hello",
+        job_seeker: newMessage.job_seeker,
+        employer_id: newMessage.employer_id,
+        message: newMessage.messages,
         time_stamp: Date.now(),
       })
       .then((res) => {
