@@ -33,3 +33,15 @@ insert into favourites (id, job_seeker_id, job_listing_id) values (2, 3, 3);
 insert into favourites (id, job_seeker_id, job_listing_id) values (3, 4, 2);
 insert into favourites (id, job_seeker_id, job_listing_id) values (4, 1, 1);
 insert into favourites (id, job_seeker_id, job_listing_id) values (5, 1, 5);
+
+insert into matches (id, job_seeker_id, job_listing_id, seeker_status, employer_status) values (1, 4, null, 'false', 'false');
+insert into matches (id, job_seeker_id, job_listing_id, seeker_status, employer_status) values (2, 2, null, 'true', 'false');
+insert into matches (id, job_seeker_id, job_listing_id, seeker_status, employer_status) values (3, 1, null, 'true', 'false');
+insert into matches (id, job_seeker_id, job_listing_id, seeker_status, employer_status) values (4, 5, null, 'false', 'false');
+insert into matches (id, job_seeker_id, job_listing_id, seeker_status, employer_status) values (5, 3, null, 'true', 'false');
+
+insert into matches (id, job_seeker_id, job_listing_id, seeker_status, employer_status) values (6, null, 1, 'false', 'false');
+insert into matches (id, job_seeker_id, job_listing_id, seeker_status, employer_status) values (7, null, 3, 'false', 'true');
+insert into matches (id, job_seeker_id, job_listing_id, seeker_status, employer_status) values (8, null, 5, 'false', 'true');
+insert into matches (id, job_seeker_id, job_listing_id, seeker_status, employer_status) values (9, null, 4, 'false', 'false');
+insert into matches (id, job_seeker_id, job_listing_id, seeker_status, employer_status) values (10, null, 2, 'false', 'true');
