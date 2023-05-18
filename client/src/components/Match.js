@@ -12,7 +12,7 @@ const Match = (props) => {
       <p className="match-subheader">Send your match a message</p>
       <div className="avatar-container">
         <img src={picture} className="match-avatars"/>
-        <img src={Ronaldo} className="match-avatars" />  
+        <img src={props.avatar} className="match-avatars" />  
       </div>
       <button className="send-message">SEND MESSAGE!</button>
       <button className="keep-swiping" onClick={props.swipeRight}>Keep Swiping!</button>

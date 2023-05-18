@@ -231,7 +231,7 @@ const JobSeeker = () => {
               numberOfPieces={150}
             />
           )}
-          <Match swipeRight={showMatch} />
+          <Match swipeRight={showMatch} avatar={jobSeeker?.avatar} />
         </div>
         </div>}
       </div>

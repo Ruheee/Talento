@@ -240,7 +240,7 @@ const JobListing = () => {
               numberOfPieces={150}
             />
           )}
-          <Match swipeRight={showMatch} />
+            <Match swipeRight={showMatch} avatar={jobListing?.employer_logo} />
         </div>
       </div> }
     </div>
