@@ -11,23 +11,16 @@ import JobSeeker from './pages/JobSeeker';
 import Login from "./pages/LogIn";
 import SignUp from "./pages/SignUp";
 import Messages from "./pages/Messages";
-import { useAuth0 } from "@auth0/auth0-react";
-import { useProtectedRoute } from "./util/useProtectedRoute";
+import useProtectedRoute from "./util/useProtectedRoute";
 
 function App() {
-
-  const { isAuthenticated } = useAuth0();
-
-  // const protectRoute = (route) => {
-  //   isAuthenticated ? route : <Navigate to="/" replace />
-  // };
 
   return (
     <Router>
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/job_listing" element={<JobListing />} />
+        <Route path="/job_listing" element={useProtectedRoute(<JobListing />)} />
         <Route
           path="/job_seeker"
           element={
