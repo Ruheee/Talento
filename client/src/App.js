@@ -10,6 +10,7 @@ import JobListing from './pages/JobListing';
 import JobSeeker from './pages/JobSeeker';
 import Login from "./pages/LogIn";
 import SignUp from "./pages/SignUp";
+import Messages from "./pages/Messages";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useProtectedRoute } from "./util/useProtectedRoute";
 
@@ -40,7 +41,10 @@ function App() {
         />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/messages" element={<Messages />} />
+        <Route
+          path="/messages"
+          element={<Messages />}
+        />
       </Routes>
     </Router>
   );
