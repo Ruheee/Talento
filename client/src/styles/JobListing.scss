@@ -174,3 +174,26 @@ box-shadow: 2px 2px 0px #000000;
 .no-more {
   height: 100%;
 }
+
+.match-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 1;
+  transition: opacity 0.5s ease-out; /* Define the transition duration and easing */
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.card_body {
+  margin-bottom: 30px; // Added margin to create space for buttons. <- remove
+}
