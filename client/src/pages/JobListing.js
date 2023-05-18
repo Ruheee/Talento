@@ -72,11 +72,11 @@ const JobListing = () => {
   const loadJobListings = () => {
     getUnmatchedJobListings(jobListingsAPI, matchesAPI).then(
       (unmatchedJobListing) => {
-        setState({
-          ...state,
+        setState((prev) => ({
+          ...prev,
           jobListings: unmatchedJobListing,
           jobListingsIndex: randomIndex(unmatchedJobListing),
-        });
+        }));
       }
     );
   };
@@ -124,8 +124,8 @@ const JobListing = () => {
         matchesAPI
       );
 
-      setState((prevState) => ({
-        ...prevState,
+      setState((prev) => ({
+        ...prev,
         jobListings: unmatchedJobListings,
         jobListingsIndex: randomIndex(unmatchedJobListings),
       }));
