@@ -34,10 +34,7 @@ function App() {
         />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route
-          path="/messages"
-          element={<Messages />}
-        />
+        <Route path="/messages" element={useProtectedRoute(<Messages />)} />
       </Routes>
     </Router>
   );
