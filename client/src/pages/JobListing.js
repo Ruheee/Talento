@@ -64,8 +64,6 @@ const JobListing = () => {
     );
   };
 
-  const notInterested = () => loadJobListings();
-
   const isInterested = () => {
     axios
       .post(matchesAPI, {
@@ -104,7 +102,7 @@ const JobListing = () => {
   const handlers = useSwipeable({
     onSwipedLeft: () => {
       console.log("Not Interested");
-      notInterested();
+      loadJobListings();
       setSwiping("left");
       setTimeout(() => setSwiping(""), 1000);
     },
@@ -209,7 +207,7 @@ const JobListing = () => {
               className="not-interested"
               onClick={(e) => {
                 e.stopPropagation();
-                notInterested();
+                loadJobListings();
               }}>
               Not Interested
             </button>
