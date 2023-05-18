@@ -19,6 +19,8 @@ const JobListing = () => {
     jobListingsIndex: 0,
   });
 
+  const [isLoading, setIsLoading] = useState(true);
+
   const [match, setMatch] = useState({
     fadeOut: false,
     visible: false,
@@ -134,6 +136,8 @@ const JobListing = () => {
         jobListings: unmatchedJobListings,
         jobListingsIndex: randomIndex(unmatchedJobListings),
       }));
+      
+      setIsLoading(false);
     };
 
     fetchData();
@@ -141,7 +145,7 @@ const JobListing = () => {
 
   return (
     <div>
-      <div
+      {isLoading ? <div></div> : <div
         className="card-container"
         style={{
           backgroundImage: `url(${process.env.PUBLIC_URL}/Background.png)`,
