@@ -4,7 +4,7 @@ import '../styles/JobListing.scss';
 
 import classNames from "classnames";
 import { useSwipeable } from 'react-swipeable';
-import '../styles/JobListing.scss';
+import ReactConfetti from 'react-confetti';
 
 import Match from "../components/Match";
 import {
@@ -219,15 +219,23 @@ const JobListing = () => {
               </button>
             </div>
         </div>
-      </div>
-  
-      <div hidden={!hiddenClass}>
-        <div className="card-body">
-          <img
-            className="no-more"
-            src={`${process.env.PUBLIC_URL}/NoMore.png`}
-          />
+        <div hidden={!hiddenClass}>
+          <div className="card-body">
+            <img
+              className="no-more"
+              src={`${process.env.PUBLIC_URL}/NoMore.png`}
+            />
+          </div>
         </div>
+      </div>
+      <div className={matchStyle}>
+      {match.visible && (
+          <ReactConfetti
+            width={window.innerWidth}
+            height={window.innerHeight}
+          />
+        )}
+        <Match swipeMore={toggleVisibility} />
       </div>
     </div>
   );
