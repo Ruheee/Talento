@@ -31,7 +31,7 @@ const JobListing = () => {
     visible: false
   });
   
-  const matchStyle = classNames("match-popup", {"hidden": !match.visible}, {"fade-out": match.fadeOut} );
+  const matchContainerClass = classNames("match-popup", {"hidden": !match.visible}, {"fade-out": match.fadeOut} );
 
   const showMatch = () => {
     if (match.visible) {
@@ -228,8 +228,8 @@ const JobListing = () => {
           </div>
         </div>
       </div>
-      <div className={matchStyle}>
-      {match.visible && (
+      <div className={matchContainerClass}>
+        {match.visible && (
           <ReactConfetti
             width={window.innerWidth}
             height={window.innerHeight}
