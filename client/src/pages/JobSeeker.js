@@ -143,11 +143,7 @@ const JobSeeker = () => {
   
   return (
     <div>
-    <div
-      className="card-container"
-      style={{
-        backgroundImage: `url(${process.env.PUBLIC_URL}/Background.png)`,
-      }}>
+      {isLoading ? <div>{/*insert progress indicator here*/}</div> :
         <div
           className="card-container"
           style={{
@@ -227,16 +223,17 @@ const JobSeeker = () => {
               />
             </div>
           </div>
-      {/* show no more card if there are no more cards to show or if first_name is undefined */}
-      <div hidden={!hiddenClass}>
-        <div className="card-body">
-          <img
-            className="no-more"
-            src={`${process.env.PUBLIC_URL}/NoMore.png`}
-          />
+          <div className={matchContainerClass}>
+          {match.visible && (
+            <ReactConfetti
+              width={window.innerWidth}
+              height={window.innerHeight}
+              numberOfPieces={150}
+            />
+          )}
+          <Match swipeRight={showMatch} />
         </div>
-      </div>
-    </div>
+        </div>}
       </div>
   );
 };
