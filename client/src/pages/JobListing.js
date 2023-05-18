@@ -194,16 +194,6 @@ const JobListing = () => {
                 Not Interested
               </button>
               <button
-                className="star"
-                onClick={
-                  (e) => {
-                    e.stopPropagation();
-                    showMatch()
-                  }
-                }>
-                <i className="fas fa-star fa-lg"></i>
-              </button>
-              <button
                 className="interested"
                 onClick={(e) => {
                   e.stopPropagation();
