@@ -8,7 +8,7 @@ import "./styles/App.scss";
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import JobListing from './pages/JobListing';
 import JobSeeker from './pages/JobSeeker';
-import Login from "./pages/Login";
+import Login from "./pages/LogIn";
 import SignUp from "./pages/SignUp";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useProtectedRoute } from "./util/useProtectedRoute";
