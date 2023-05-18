@@ -219,6 +219,7 @@ const JobListing = () => {
           <ReactConfetti
             width={window.innerWidth}
             height={window.innerHeight}
+            numberOfPieces={150}
           />
         )}
         <Match swipeRight={showMatch} />
