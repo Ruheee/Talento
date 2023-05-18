@@ -33,7 +33,7 @@ const JobListing = () => {
   
   const matchStyle = classNames("match-popup", {"hidden": !match.visible}, {"fade-out": match.fadeOut} );
 
-  const toggleVisibility = () => {
+  const showMatch = () => {
     if (match.visible) {
       setMatch((prev) => ({ ...prev, fadeOut: true }));
       setTimeout(() => {
@@ -99,7 +99,7 @@ const JobListing = () => {
           const seeker_status = filtered[0].seeker_status;
           const employer_status = filtered[0].employer_status;
           if (seeker_status === "true" && employer_status === "true") {
-            toggleVisibility();
+            showMatch();
             jobListingsAPICall();
           } else {
             jobListingsAPICall();
@@ -198,7 +198,7 @@ const JobListing = () => {
                 onClick={
                   (e) => {
                     e.stopPropagation();
-                    toggleVisibility()
+                    showMatch()
                   }
                 }>
                 <i className="fas fa-star fa-lg"></i>
@@ -235,7 +235,7 @@ const JobListing = () => {
             height={window.innerHeight}
           />
         )}
-        <Match swipeRight={toggleVisibility} />
+        <Match swipeRight={showMatch} />
       </div>
     </div>
   );
