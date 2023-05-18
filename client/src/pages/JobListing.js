@@ -5,6 +5,7 @@ import '../styles/JobListing.scss';
 import classNames from "classnames";
 import { useSwipeable } from 'react-swipeable';
 import ReactConfetti from 'react-confetti';
+import ConfettiExplosion from "react-confetti-explosion";
 
 import Match from "../components/Match";
 import {
@@ -174,6 +175,14 @@ const JobListing = () => {
                 <article className="content-body">{jobListing?.skills}</article>
               </div>
               <div>
+                {match.visible && (
+                  <ConfettiExplosion
+                    force={0.8}
+                    duration={5000}
+                    particleCount={400}
+                    width={1500}
+                  />
+                )}
                 <section className="content-header">Location</section>
                 <article className="content-body">
                   {jobListing?.city}, {jobListing?.country}
