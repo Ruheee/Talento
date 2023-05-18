@@ -12,9 +12,135 @@ import {
   getUnmatchedJobSeekers,
   randomIndex,
 } from "../helpers/selectors";
+
+const JobSeeker = () => {
+  const [state, setState] = useState({
+    jobSeekers: {},
+    jobSeekersIndex: 0,
+  });
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [match, setMatch] = useState({
+    fadeOut: false,
+    visible: false,
+  });
+
+  const [swiping, setSwiping] = useState("");
+  const [enlarged, setEnlarged] = useState(false); // new state for enlargement
+
+  const jobSeekersAPI = "/api/job_seekers";
+  const matchesAPI = "/api/matches";
+
+  const jobSeeker = state.jobSeekers[state.jobSeekersIndex];
+
+  const isHidden = jobSeeker?.first_name === undefined && "hidden";
+  const matchContainerClass = classNames(
+    "match-popup",
+    { hidden: !match.visible },
+    { "fade-out": match.fadeOut }
+  );
+
+  const showMatch = () => {
+    if (match.visible) {
+      setMatch((prev) => ({ ...prev, fadeOut: true }));
+      setTimeout(() => {
+        setMatch((prev) => ({ ...prev, visible: false }));
+      }, 500);
+    } else {
+      setMatch({ visible: true, fadeOut: false });
+    }
+  };
+
+  const loadJobSeekers = () => {
+    getUnmatchedJobSeekers(jobSeekersAPI, matchesAPI).then(
+      (unmatchedJobSeeker) => {
+        setState((prev) => ({
+          ...prev,
+          jobSeekers: unmatchedJobSeeker,
+          jobSeekersIndex: randomIndex(unmatchedJobSeeker),
+        }));
+      }
+    );
+  };
+
+  const isInterested = () => {
+    axios
+      .post(matchesAPI, {
+        // replace *_id with the user's id
+        job_seeker_id: jobSeeker?.id,
+        job_listing_id: null,
+        seeker_status: true,
+        employer_status: true,
+      })
+      .then(() => {
+        axios.get(matchesAPI).then((response) => {
+          const filtered = response.data.filter(
+            (match) => match.job_seeker_id === jobSeeker?.id
+          );
+          const seeker_status = filtered[0].seeker_status;
+          const employer_status = filtered[0].employer_status;
+
+          // check if the job seeker and employer have both swiped right
+          // then show the match popup
+          //otherwise rerender the page and show the next job listing
+          if (seeker_status === "true" && employer_status === "true") {
+            showMatch();
+            loadJobSeekers();
+          } else {
+            loadJobSeekers();
+          }
+        });
+      });
+  };
+
+    // resets database -- remove before production
+    const resetDB = () => {
+      axios.get("api/debug/reset").then(() => loadJobSeekers());
+    };
   
-const JobSeeker = (props) => {
-  let hiddenClass = classNames({ hidden: props.data?.first_name === undefined });
+    const handlers = useSwipeable({
+      onSwipedLeft: () => {
+        console.log("Not Interested");
+        loadJobSeekers();
+        setSwiping("left");
+        setTimeout(() => setSwiping(""), 1000);
+      },
+      onSwipedRight: () => {
+        console.log("Interested");
+        isInterested();
+        setSwiping("right");
+        setTimeout(() => setSwiping(""), 1000);
+      },
+      preventDefaultTouchmoveEvent: true,
+      trackMouse: true,
+    });
+  
+    const handleClick = () => {
+      // new handler for click event
+      setEnlarged(!enlarged);
+    };
+  
+    // GET request to the server to retrieve the job listings on page load
+    useEffect(() => {
+      const fetchData = async () => {
+        const unmatchedJobSeekers = await getUnmatchedJobSeekers(
+          jobSeekersAPI,
+          matchesAPI
+        );
+  
+        setState((prev) => ({
+          ...prev,
+          jobSeekers: unmatchedJobSeekers,
+          jobSeekersIndex: randomIndex(unmatchedJobSeekers),
+        }));
+        
+        setIsLoading(false);
+      };
+  
+      fetchData();
+    }, []);
+  
   return (
     <div
       className="card-container"
