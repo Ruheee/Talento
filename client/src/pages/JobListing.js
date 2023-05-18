@@ -98,6 +98,10 @@ const JobListing = () => {
           const filtered = response.data.filter((match) => match.job_listing_id === jobListingData?.id);
           const seeker_status = filtered[0].seeker_status;
           const employer_status = filtered[0].employer_status;
+          
+          // check if the job seeker and employer have both swiped right
+          // then show the match popup 
+          //otherwise rerender the page and show the next job listing
           if (seeker_status === "true" && employer_status === "true") {
             showMatch();
             jobListingsAPICall();
@@ -113,6 +117,7 @@ const JobListing = () => {
     axios.get("api/debug/reset").then(() => jobListingsAPICall());
   };
 
+  // GET request to the server to retrieve the job listings on page load
   useEffect(() => {
     const fetchData = async () => {
       const unmatchedJobListings = await getUnmatchedJobListings(
