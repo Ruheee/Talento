@@ -31,10 +31,10 @@ function App() {
           path="/job_seeker"
           element={
             <JobSeeker
-              data={jobSeekerData}
-              interested={employerInterested}
-              notInterested={jobSeekersAPICall}
-              reset={() => reset(jobSeekersAPICall)}
+              data={""}
+              interested={""}
+              notInterested={""}
+              reset={""}
             />
           }
         />
