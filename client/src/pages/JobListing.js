@@ -204,13 +204,7 @@ const JobListing = () => {
                 <i className="fas fa-star fa-lg"></i>
               </button>
               <button
-                className={`interested ${
-                  swiping === "right"
-                    ? "swiping-right"
-                    : swiping === "left"
-                    ? "swiping-left"
-                    : ""
-                }`}
+                className="interested"
                 onClick={(e) => {
                   e.stopPropagation();
                   isInterested();
