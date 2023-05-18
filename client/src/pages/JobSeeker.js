@@ -70,7 +70,7 @@ const JobSeeker = () => {
         // replace *_id with the user's id
         job_seeker_id: jobSeeker?.id,
         job_listing_id: null,
-        seeker_status: true,
+        seeker_status: null,
         employer_status: true,
       })
       .then(() => {

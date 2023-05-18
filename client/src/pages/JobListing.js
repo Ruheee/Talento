@@ -71,7 +71,7 @@ const JobListing = () => {
         job_seeker_id: null,
         job_listing_id: jobListing?.id,
         seeker_status: true,
-        employer_status: true,
+        employer_status: null,
       })
       .then(() => {
         axios.get(matchesAPI).then((response) => {
