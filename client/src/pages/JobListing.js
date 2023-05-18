@@ -9,7 +9,6 @@ import ReactConfetti from 'react-confetti';
 import Match from "../components/Match";
 import {
   getUnmatchedJobListings,
-  getUnmatchedJobSeekers,
   randomIndex,
 } from "../helpers/selectors";
 
