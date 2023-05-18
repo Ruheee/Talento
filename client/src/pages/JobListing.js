@@ -67,7 +67,7 @@ const JobListing = () => {
   const isInterested = () => {
     axios
       .post(matchesAPI, {
-        // replace job_seeker_id with the user's id
+        // replace *_id with the user's id
         job_seeker_id: null,
         job_listing_id: jobListing?.id,
         seeker_status: true,
@@ -143,11 +143,14 @@ const JobListing = () => {
 
   return (
     <div>
-      {isLoading ? <div></div> : <div
+      {isLoading ? <div>{/*insert progress indicator here*/}</div> :
+      <div
         className="card-container"
         style={{
           backgroundImage: `url(${process.env.PUBLIC_URL}/Background.png)`,
-        }}>
+          }}>
+          
+          {/* resets database -- remove before production */}
         <button className="star" onClick={resetDB} hidden={!isHidden}>
           Reset
         </button>
