@@ -142,57 +142,91 @@ const JobSeeker = () => {
     }, []);
   
   return (
+    <div>
     <div
       className="card-container"
       style={{
         backgroundImage: `url(${process.env.PUBLIC_URL}/Background.png)`,
       }}>
+        <div
+          className="card-container"
+          style={{
+            backgroundImage: `url(${process.env.PUBLIC_URL}/Background.png)`,
+          }}>
       
-      {/* resets database -- remove before production */}
-      <button className="star" onClick={props.reset}>
-        Reset
-      </button>
-      <br />
+          {/* resets database -- remove before production */}
+          <button className="star" onClick={resetDB} hidden={!isHidden}>
+            Reset
+          </button>
+          <br />
 
-      {/* show no more card if there are no more cards to show or if first_name is undefined */}
-      <div hidden={hiddenClass}>
-        <div className="card-body">
-          <img
-            className="profile"
-            src={props.data?.avatar}
-            width={135}
-          />
-          <header className="seeker-name">{props.data?.first_name} {props.data?.last_name}</header>
-          <header className="seeker-location">{props.data?.city}, {props.data?.country}</header>
-          <section className="subheader">About Me</section>
-          <div className="content-container">
-            <article className="content-body">
-            {props.data?.about_me}
-            </article>
-            <section className="subheader">Skills</section>
-            <article className="content-body">
-            {props.data?.skills}
-            </article>
-            <section className="subheader">Resume</section>
-            <article className="content-body">
-            {props.data?.resume}
-            </article>
+          {/* show no more card if there are no more cards to show or if first_name is undefined */}
+          <div hidden={isHidden}>
+            <div className={`card-body ${
+              swiping === "right"
+                ? "swiping-right"
+                : swiping === "left"
+                ? "swiping-left"
+                : ""
+              } ${enlarged ? "enlarge" : ""}`}
+              {...handlers}
+              onClick={handleClick}>
+              <img
+                className="profile"
+                src={jobSeeker?.avatar}
+                width={135}
+              />
+              <header className="seeker-name">{jobSeeker?.first_name} {jobSeeker?.last_name}</header>
+              <header className="seeker-location">{jobSeeker?.city}, {jobSeeker?.country}</header>
+              <section className="subheader">About Me</section>
+              <div className="content-container">
+              {match.visible && (
+                  <ConfettiExplosion
+                    force={0.8}
+                    duration={5000}
+                    particleCount={400}
+                    width={1500}
+                  />
+                )}
+                <article className="content-body">
+                  {jobSeeker?.about_me}
+                </article>
+                <section className="subheader">Skills</section>
+                <article className="content-body">
+                  {jobSeeker?.skills}
+                </article>
+                <section className="subheader">Resume</section>
+                <article className="content-body">
+                  {jobSeeker?.resume}
+                </article>
+              </div>
+            </div>
+
+            <div className="action-buttons">
+              <button className="not-interested" onClick={(e) => {
+                e.stopPropagation();
+                loadJobSeekers();
+              }}>
+                Not Interested
+              </button>
+              <button className="interested" onClick={(e) => {
+                e.stopPropagation();
+                isInterested();
+              }}>
+                Interested
+              </button>
+            </div>
           </div>
-        </div>
 
-        <div className="action-buttons">
-          <button className="not-interested" onClick={props.notInterested}>
-            Not Interested
-          </button>
-          <button className="star">
-            <i className="fas fa-star fa-lg"></i>
-          </button>
-          <button className="interested" onClick={props.interested}>
-            Interested
-          </button>
-        </div>
-      </div>
-
+          {/* show no more card if there are no more cards to show or if first_name is undefined */}
+          <div hidden={!isHidden}>
+            <div className="card-body">
+              <img
+                className="no-more"
+                src={`${process.env.PUBLIC_URL}/NoMore.png`}
+              />
+            </div>
+          </div>
       {/* show no more card if there are no more cards to show or if first_name is undefined */}
       <div hidden={!hiddenClass}>
         <div className="card-body">
@@ -203,6 +237,7 @@ const JobSeeker = () => {
         </div>
       </div>
     </div>
+      </div>
   );
 };
   
