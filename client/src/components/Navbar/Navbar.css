@@ -44,7 +44,7 @@
 
 
 .search-input {
-  width: 100%;
+  width: 90%;
   height: 45px;
   border: none;
   border-radius: 20px;
@@ -98,6 +98,12 @@
 .login-button:hover {
   background-color: #E1E1E1;
   cursor: pointer;
+}
+
+.user-avatar {
+  border-radius: 100%;
+  width: 7%;
+  margin-right: 10px;
 }
 
 /* Mobile styles */
