@@ -24,7 +24,7 @@ const JobListing = () => {
   
   const jobListingData = state.jobListings[state.jobListingsIndex];
 
-  let hiddenClass = classNames({ hidden: jobListingData?.job_title === undefined });
+  const isHidden = jobListingData?.job_title === undefined && "hidden";
   
   const [match, setMatch] = useState({
     fadeOut: false,
@@ -142,7 +142,7 @@ const JobListing = () => {
         </button>
         <br />
 
-        <div hidden={hiddenClass}>
+        <div hidden={isHidden}>
           <div
             className={`card-body ${
               swiping === "right"
@@ -219,7 +219,7 @@ const JobListing = () => {
               </button>
             </div>
         </div>
-        <div hidden={!hiddenClass}>
+        <div hidden={!isHidden}>
           <div className="card-body">
             <img
               className="no-more"
