@@ -19,17 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/job_listing" element={useProtectedRoute(<JobListing />)} />
-        <Route
-          path="/job_seeker"
-          element={
-            <JobSeeker
-              data={""}
-              interested={""}
-              notInterested={""}
-              reset={""}
-            />
-          }
-        />
+        <Route path="/job_seeker" element={useProtectedRoute(<JobSeeker />)} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/messages" element={useProtectedRoute(<Messages />)} />
@@ -37,6 +27,5 @@ function App() {
     </Router>
   );
 }
-
 
 export default App;
