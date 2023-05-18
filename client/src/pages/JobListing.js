@@ -235,7 +235,7 @@ const JobListing = () => {
             height={window.innerHeight}
           />
         )}
-        <Match swipeMore={toggleVisibility} />
+        <Match swipeRight={toggleVisibility} />
       </div>
     </div>
   );
