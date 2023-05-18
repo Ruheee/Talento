@@ -231,17 +231,17 @@ const JobListing = () => {
             />
           </div>
         </div>
-      </div>
-      <div className={matchContainerClass}>
-        {match.visible && (
-          <ReactConfetti
-            width={window.innerWidth}
-            height={window.innerHeight}
-            numberOfPieces={150}
-          />
-        )}
-        <Match swipeRight={showMatch} />
-      </div>
+        <div className={matchContainerClass}>
+          {match.visible && (
+            <ReactConfetti
+              width={window.innerWidth}
+              height={window.innerHeight}
+              numberOfPieces={150}
+            />
+          )}
+          <Match swipeRight={showMatch} />
+        </div>
+      </div> }
     </div>
   );
 }
