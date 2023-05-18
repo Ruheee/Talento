@@ -15,26 +15,29 @@ import {
 
 const JobListing = () => {
   const [state, setState] = useState({
-   jobListings: {},
-   jobListingsIndex: 0,
-  });
-  
-  const [match, setMatch] = useState({
-    fadeOut: false,
-    visible: false
+    jobListings: {},
+    jobListingsIndex: 0,
   });
 
-  const [swiping, setSwiping] = useState('');
-  const [enlarged, setEnlarged] = useState(false);  // new state for enlargement
+  const [match, setMatch] = useState({
+    fadeOut: false,
+    visible: false,
+  });
+
+  const [swiping, setSwiping] = useState("");
+  const [enlarged, setEnlarged] = useState(false); // new state for enlargement
 
   const jobListingsAPI = "/api/job_listings";
   const matchesAPI = "/api/matches";
-  
+
   const jobListing = state.jobListings[state.jobListingsIndex];
 
   const isHidden = jobListing?.job_title === undefined && "hidden";
-  
-  const matchContainerClass = classNames("match-popup", {"hidden": !match.visible}, {"fade-out": match.fadeOut} );
+  const matchContainerClass = classNames(
+    "match-popup",
+    { hidden: !match.visible },
+    { "fade-out": match.fadeOut }
+  );
 
   const showMatch = () => {
     if (match.visible) {
@@ -46,7 +49,7 @@ const JobListing = () => {
       setMatch({ visible: true, fadeOut: false });
     }
   };
-  
+
   const loadJobListings = () => {
     getUnmatchedJobListings(jobListingsAPI, matchesAPI).then(
       (unmatchedJobListing) => {
@@ -56,13 +59,13 @@ const JobListing = () => {
           jobListingsIndex: randomIndex(unmatchedJobListing),
         }));
       }
-      );
-    };
-    
-    const notInterested = () => loadJobListings();
-    
-    const isInterested = () => {
-      axios
+    );
+  };
+
+  const notInterested = () => loadJobListings();
+
+  const isInterested = () => {
+    axios
       .post(matchesAPI, {
         // replace job_seeker_id with the user's id
         job_seeker_id: null,
@@ -71,13 +74,15 @@ const JobListing = () => {
         employer_status: true,
       })
       .then(() => {
-        axios.get(matchesAPI).then((response) => { 
-          const filtered = response.data.filter((match) => match.job_listing_id === jobListing?.id);
+        axios.get(matchesAPI).then((response) => {
+          const filtered = response.data.filter(
+            (match) => match.job_listing_id === jobListing?.id
+          );
           const seeker_status = filtered[0].seeker_status;
           const employer_status = filtered[0].employer_status;
-          
+
           // check if the job seeker and employer have both swiped right
-          // then show the match popup 
+          // then show the match popup
           //otherwise rerender the page and show the next job listing
           if (seeker_status === "true" && employer_status === "true") {
             showMatch();
@@ -87,47 +92,48 @@ const JobListing = () => {
           }
         });
       });
-    };
-    
-    // resets database -- remove before production
-    const resetDB = () => {
-      axios.get("api/debug/reset").then(() => loadJobListings());
-    };
-    
-    const handlers = useSwipeable({
-      onSwipedLeft: () => {
-        console.log('Not Interested');
-        notInterested();
-        setSwiping('left');
-        setTimeout(() => setSwiping(''), 1000);
-      },
-      onSwipedRight: () => {
-        console.log('Interested');
-        isInterested();
-        setSwiping('right');
-        setTimeout(() => setSwiping(''), 1000);
-      },
-      preventDefaultTouchmoveEvent: true,
-      trackMouse: true
-    });
-  
-    const handleClick = () => {   // new handler for click event
-      setEnlarged(!enlarged);
-    };
-  
-    // GET request to the server to retrieve the job listings on page load
-    useEffect(() => {
-      const fetchData = async () => {
-        const unmatchedJobListings = await getUnmatchedJobListings(
-          jobListingsAPI,
-          matchesAPI
-          );
-          
-          setState((prev) => ({
-            ...prev,
-            jobListings: unmatchedJobListings,
-            jobListingsIndex: randomIndex(unmatchedJobListings),
-          }));
+  };
+
+  // resets database -- remove before production
+  const resetDB = () => {
+    axios.get("api/debug/reset").then(() => loadJobListings());
+  };
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => {
+      console.log("Not Interested");
+      notInterested();
+      setSwiping("left");
+      setTimeout(() => setSwiping(""), 1000);
+    },
+    onSwipedRight: () => {
+      console.log("Interested");
+      isInterested();
+      setSwiping("right");
+      setTimeout(() => setSwiping(""), 1000);
+    },
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true,
+  });
+
+  const handleClick = () => {
+    // new handler for click event
+    setEnlarged(!enlarged);
+  };
+
+  // GET request to the server to retrieve the job listings on page load
+  useEffect(() => {
+    const fetchData = async () => {
+      const unmatchedJobListings = await getUnmatchedJobListings(
+        jobListingsAPI,
+        matchesAPI
+      );
+
+      setState((prev) => ({
+        ...prev,
+        jobListings: unmatchedJobListings,
+        jobListingsIndex: randomIndex(unmatchedJobListings),
+      }));
     };
 
     fetchData();
@@ -193,26 +199,25 @@ const JobListing = () => {
                 </article>
               </div>
             </div>
-
           </div>
-            <div className="action-buttons">
-              <button
-                className="not-interested"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  notInterested();
-                }}>
-                Not Interested
-              </button>
-              <button
-                className="interested"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  isInterested();
-                }}>
-                Interested
-              </button>
-            </div>
+          <div className="action-buttons">
+            <button
+              className="not-interested"
+              onClick={(e) => {
+                e.stopPropagation();
+                notInterested();
+              }}>
+              Not Interested
+            </button>
+            <button
+              className="interested"
+              onClick={(e) => {
+                e.stopPropagation();
+                isInterested();
+              }}>
+              Interested
+            </button>
+          </div>
         </div>
         <div hidden={!isHidden}>
           <div className="card-body">
@@ -236,6 +241,5 @@ const JobListing = () => {
     </div>
   );
 }
-
 
 export default JobListing;
