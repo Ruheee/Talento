@@ -137,7 +137,7 @@ const JobListing = () => {
         style={{
           backgroundImage: `url(${process.env.PUBLIC_URL}/Background.png)`,
         }}>
-        <button className="star" onClick={resetDB}>
+        <button className="star" onClick={resetDB} hidden={!isHidden}>
           Reset
         </button>
         <br />
