@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
-// import axios from "axios";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import "./styles/App.scss";
 
 import Navbar from "./components/Navbar/Navbar";
 import HomePage from "./pages/HomePage";
-import "./styles/App.scss";
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import JobListing from './pages/JobListing';
 import JobSeeker from './pages/JobSeeker';
 import Login from "./pages/LogIn";
