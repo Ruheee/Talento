@@ -1,6 +1,17 @@
-import React from 'react';
-import classNames from "classnames";
+import React, { useState, useEffect } from 'react';
+import axios from "axios";
 import '../styles/JobSeeker.scss';
+
+import classNames from "classnames";
+import { useSwipeable } from 'react-swipeable';
+import ReactConfetti from 'react-confetti';
+import ConfettiExplosion from "react-confetti-explosion";
+
+import Match from "../components/Match";
+import {
+  getUnmatchedJobSeekers,
+  randomIndex,
+} from "../helpers/selectors";
   
 const JobSeeker = (props) => {
   let hiddenClass = classNames({ hidden: props.data?.first_name === undefined });
