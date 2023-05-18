@@ -70,7 +70,7 @@ const JobListing = () => {
   };
 
   
-  const jobListingsAPICall = () => {
+  const loadJobListings = () => {
     getUnmatchedJobListings(jobListingsAPI, matchesAPI).then(
       (unmatchedJobListing) => {
         setState({
@@ -82,7 +82,7 @@ const JobListing = () => {
     );
   };
 
-  const notInterested = () => jobListingsAPICall();
+  const notInterested = () => loadJobListings();
 
   const isInterested = () => {
     axios
@@ -98,15 +98,15 @@ const JobListing = () => {
           const filtered = response.data.filter((match) => match.job_listing_id === jobListingData?.id);
           const seeker_status = filtered[0].seeker_status;
           const employer_status = filtered[0].employer_status;
-          
+
           // check if the job seeker and employer have both swiped right
           // then show the match popup 
           //otherwise rerender the page and show the next job listing
           if (seeker_status === "true" && employer_status === "true") {
             showMatch();
-            jobListingsAPICall();
+            loadJobListings();
           } else {
-            jobListingsAPICall();
+            loadJobListings();
           }
         });
       });
@@ -114,7 +114,7 @@ const JobListing = () => {
 
   // resets database -- remove before production
   const resetDB = () => {
-    axios.get("api/debug/reset").then(() => jobListingsAPICall());
+    axios.get("api/debug/reset").then(() => loadJobListings());
   };
 
   // GET request to the server to retrieve the job listings on page load
