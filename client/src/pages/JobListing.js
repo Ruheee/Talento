@@ -22,9 +22,9 @@ const JobListing = () => {
   const jobListingsAPI = "/api/job_listings";
   const matchesAPI = "/api/matches";
   
-  const jobListingData = state.jobListings[state.jobListingsIndex];
+  const jobListing = state.jobListings[state.jobListingsIndex];
 
-  const isHidden = jobListingData?.job_title === undefined && "hidden";
+  const isHidden = jobListing?.job_title === undefined && "hidden";
   
   const [match, setMatch] = useState({
     fadeOut: false,
@@ -89,13 +89,13 @@ const JobListing = () => {
       .post(matchesAPI, {
         // replace job_seeker_id with the user's id
         job_seeker_id: null,
-        job_listing_id: jobListingData?.id,
+        job_listing_id: jobListing?.id,
         seeker_status: true,
         employer_status: true,
       })
       .then(() => {
         axios.get(matchesAPI).then((response) => { 
-          const filtered = response.data.filter((match) => match.job_listing_id === jobListingData?.id);
+          const filtered = response.data.filter((match) => match.job_listing_id === jobListing?.id);
           const seeker_status = filtered[0].seeker_status;
           const employer_status = filtered[0].employer_status;
 
@@ -158,32 +158,32 @@ const JobListing = () => {
             } ${enlarged ? "enlarge" : ""}`}
             {...handlers}
             onClick={handleClick}>
-            <img className="logo" src={jobListingData?.employer_logo} width={135} />
-            <header className="job-title">{jobListingData?.job_title}</header>
+            <img className="logo" src={jobListing?.employer_logo} width={135} />
+            <header className="job-title">{jobListing?.job_title}</header>
             <header className="company-name">
-              {jobListingData?.employer_name}
+              {jobListing?.employer_name}
             </header>
             <section className="content-header">About the job</section>
             <article className="content-body">
-              {jobListingData?.job_description}
+              {jobListing?.job_description}
             </article>
             <div className="row-container">
               <div>
                 <section className="content-header">Salary</section>
                 <article className="content-body">
-                  ${jobListingData?.salary}
+                  ${jobListing?.salary}
                 </article>
                 <section className="content-header">Skills</section>
-                <article className="content-body">{jobListingData?.skills}</article>
+                <article className="content-body">{jobListing?.skills}</article>
               </div>
               <div>
                 <section className="content-header">Location</section>
                 <article className="content-body">
-                  {jobListingData?.city}, {jobListingData?.country}
+                  {jobListing?.city}, {jobListing?.country}
                 </article>
                 <section className="content-header">Date Posted</section>
                 <article className="content-body">
-                  {jobListingData?.date_posted}
+                  {jobListing?.date_posted}
                 </article>
               </div>
             </div>
