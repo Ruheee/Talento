@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import "./styles/App.scss";
 
 import Navbar from "./components/Navbar/Navbar";
 import HomePage from "./pages/HomePage";
 import "./styles/App.scss";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import JobListing from './pages/JobListing';
 import JobSeeker from './pages/JobSeeker';
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
-import Messages from "./pages/Messages"
-import {
-  getUnmatchedJobListings,
-  getUnmatchedJobSeekers,
-  randomIndex,
-} from "./helpers/selectors";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useProtectedRoute } from "./util/useProtectedRoute";
 
 function App() {
 
+  const { isAuthenticated } = useAuth0();
 
+  // const protectRoute = (route) => {
+  //   isAuthenticated ? route : <Navigate to="/" replace />
+  // };
 
   return (
     <Router>
