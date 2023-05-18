@@ -42,7 +42,6 @@ const JobListing = () => {
     } else {
       setMatch((prev) => ({ ...prev, visible: true, fadeOut: false }));
     }
-    return true;
   };
   
   const [swiping, setSwiping] = useState('');
