@@ -20,6 +20,7 @@ const JobSeeker = () => {
   });
 
   const [isLoading, setIsLoading] = useState(true);
+  const [avatar, setAvatar] = useState(""); // new state for avatar
 
   const [match, setMatch] = useState({
     fadeOut: false,
@@ -78,6 +79,7 @@ const JobSeeker = () => {
   };
 
   const isInterested = () => {
+    setAvatar(jobSeeker?.avatar)
     axios
       .post(matchesAPI, {
         // replace *_id with the user's id
@@ -249,7 +251,7 @@ const JobSeeker = () => {
                 numberOfPieces={150}
               />
             )}
-            <Match swipeRight={showMatch} avatar={jobSeeker?.avatar} />
+            <Match swipeRight={showMatch} avatar={avatar} />
           </div>
         </div>
       )}
