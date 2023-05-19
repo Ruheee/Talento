@@ -115,16 +115,18 @@ const JobSeeker = () => {
   
     const handlers = useSwipeable({
       onSwipedLeft: () => {
-        console.log("Not Interested");
-        isNotInterested();
         setSwiping("left");
-        setTimeout(() => setSwiping(""), 1000);
+        setTimeout(() => {
+          isNotInterested();
+          setSwiping("");
+        }, 1000);
       },
       onSwipedRight: () => {
-        console.log("Interested");
-        isInterested();
         setSwiping("right");
-        setTimeout(() => setSwiping(""), 1000);
+        setTimeout(() => {
+          isInterested();
+          setSwiping("");
+        }, 1000);
       },
       preventDefaultTouchmoveEvent: true,
       trackMouse: true,
@@ -157,40 +159,36 @@ const JobSeeker = () => {
   
   return (
     <div>
-      {isLoading ? <div>{/*insert progress indicator here*/}</div> :
+      {isLoading ? (
+        <div>{/*insert progress indicator here*/}</div>
+      ) : (
         <div
           className="card-container"
           style={{
             backgroundImage: `url(${process.env.PUBLIC_URL}/Background.png)`,
           }}>
-      
-          {/* resets database -- remove before production */}
-          <button className="star" onClick={resetDB} hidden={!isHidden}>
-            Reset
-          </button>
-          <br />
-
           {/* show no more card if there are no more cards to show or if first_name is undefined */}
           <div hidden={isHidden}>
-            <div className={`card-body ${
-              swiping === "right"
-                ? "swiping-right"
-                : swiping === "left"
-                ? "swiping-left"
-                : ""
+            <div
+              className={`card-body ${
+                swiping === "right"
+                  ? "swiping-right"
+                  : swiping === "left"
+                  ? "swiping-left"
+                  : ""
               } ${enlarged ? "enlarge" : ""}`}
               {...handlers}
               onClick={handleClick}>
-              <img
-                className="profile"
-                src={jobSeeker?.avatar}
-                width={135}
-              />
-              <header className="seeker-name">{jobSeeker?.first_name} {jobSeeker?.last_name}</header>
-              <header className="seeker-location">{jobSeeker?.city}, {jobSeeker?.country}</header>
+              <img className="profile" src={jobSeeker?.avatar} width={135} />
+              <header className="seeker-name">
+                {jobSeeker?.first_name} {jobSeeker?.last_name}
+              </header>
+              <header className="seeker-location">
+                {jobSeeker?.city}, {jobSeeker?.country}
+              </header>
               <section className="subheader">About Me</section>
               <div className="content-container">
-              {match.visible && (
+                {match.visible && (
                   <ConfettiExplosion
                     force={0.8}
                     duration={5000}
@@ -202,27 +200,27 @@ const JobSeeker = () => {
                   {jobSeeker?.about_me}
                 </article>
                 <section className="subheader">Skills</section>
-                <article className="content-body">
-                  {jobSeeker?.skills}
-                </article>
+                <article className="content-body">{jobSeeker?.skills}</article>
                 <section className="subheader">Resume</section>
-                <article className="content-body">
-                  {jobSeeker?.resume}
-                </article>
+                <article className="content-body">{jobSeeker?.resume}</article>
               </div>
             </div>
 
             <div className="action-buttons">
-              <button className="not-interested" onClick={(e) => {
-                e.stopPropagation();
-                isNotInterested();
-              }}>
+              <button
+                className="not-interested"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  isNotInterested();
+                }}>
                 Not Interested
               </button>
-              <button className="interested" onClick={(e) => {
-                e.stopPropagation();
-                isInterested();
-              }}>
+              <button
+                className="interested"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  isInterested();
+                }}>
                 Interested
               </button>
             </div>
@@ -237,18 +235,25 @@ const JobSeeker = () => {
               />
             </div>
           </div>
+          {/* resets database -- remove before production */}
+          <div className="reset-container">
+            <button className="star" onClick={resetDB} hidden={!isHidden}>
+              Reset
+            </button>
+          </div>
           <div className={matchContainerClass}>
-          {match.visible && (
-            <ReactConfetti
-              width={window.innerWidth}
-              height={window.innerHeight}
-              numberOfPieces={150}
-            />
-          )}
-          <Match swipeRight={showMatch} avatar={jobSeeker?.avatar} />
+            {match.visible && (
+              <ReactConfetti
+                width={window.innerWidth}
+                height={window.innerHeight}
+                numberOfPieces={150}
+              />
+            )}
+            <Match swipeRight={showMatch} avatar={jobSeeker?.avatar} />
+          </div>
         </div>
-        </div>}
-      </div>
+      )}
+    </div>
   );
 };
   

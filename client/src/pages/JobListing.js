@@ -117,16 +117,18 @@ const JobListing = () => {
 
   const handlers = useSwipeable({
     onSwipedLeft: () => {
-      console.log("Not Interested");
-      isNotInterested();
       setSwiping("left");
-      setTimeout(() => setSwiping(""), 1000);
+      setTimeout(() => {
+        isNotInterested();
+        setSwiping("");
+      }, 1000);
     },
     onSwipedRight: () => {
-      console.log("Interested");
-      isInterested();
       setSwiping("right");
-      setTimeout(() => setSwiping(""), 1000);
+      setTimeout(() => {
+        isInterested();
+        setSwiping("")
+      }, 1000);
     },
     preventDefaultTouchmoveEvent: true,
     trackMouse: true,
@@ -159,106 +161,114 @@ const JobListing = () => {
 
   return (
     <div>
-      {isLoading ? <div>{/*insert progress indicator here*/}</div> :
-      <div
-        className="card-container"
-        style={{
-          backgroundImage: `url(${process.env.PUBLIC_URL}/Background.png)`,
+      {isLoading ? (
+        <div>{/*insert progress indicator here*/}</div>
+      ) : (
+        <div
+          className="card-container"
+          style={{
+            backgroundImage: `url(${process.env.PUBLIC_URL}/Background.png)`,
           }}>
-          
-          {/* resets database -- remove before production */}
-        <button className="star" onClick={resetDB} hidden={!isHidden}>
-          Reset
-        </button>
-        <br />
-
-        <div hidden={isHidden}>
-          <div
-            className={`card-body ${
-              swiping === "right"
-                ? "swiping-right"
-                : swiping === "left"
-                ? "swiping-left"
-                : ""
-            } ${enlarged ? "enlarge" : ""}`}
-            {...handlers}
-            onClick={handleClick}>
-            <img className="logo" src={jobListing?.employer_logo} width={135} />
-            <header className="job-title">{jobListing?.job_title}</header>
-            <header className="company-name">
-              {jobListing?.employer_name}
-            </header>
-            <section className="content-header">About the job</section>
-            <article className="content-body">
-              {jobListing?.job_description}
-            </article>
-            <div className="row-container">
-              <div>
-                <section className="content-header">Salary</section>
-                <article className="content-body">
-                  ${jobListing?.salary}
-                </article>
-                <section className="content-header">Skills</section>
-                <article className="content-body">{jobListing?.skills}</article>
-              </div>
-              <div>
-                {match.visible && (
-                  <ConfettiExplosion
-                    force={0.8}
-                    duration={5000}
-                    particleCount={400}
-                    width={1500}
-                  />
-                )}
-                <section className="content-header">Location</section>
-                <article className="content-body">
-                  {jobListing?.city}, {jobListing?.country}
-                </article>
-                <section className="content-header">Date Posted</section>
-                <article className="content-body">
-                  {jobListing?.date_posted}
-                </article>
+          <div hidden={isHidden}>
+            <div
+              className={`card-body ${
+                swiping === "right"
+                  ? "swiping-right"
+                  : swiping === "left"
+                  ? "swiping-left"
+                  : ""
+              } ${enlarged ? "enlarge" : ""}`}
+              {...handlers}
+              onClick={handleClick}>
+              <img
+                className="logo"
+                src={jobListing?.employer_logo}
+                width={135}
+              />
+              <header className="job-title">{jobListing?.job_title}</header>
+              <header className="company-name">
+                {jobListing?.employer_name}
+              </header>
+              <section className="content-header">About the job</section>
+              <article className="content-body">
+                {jobListing?.job_description}
+              </article>
+              <div className="row-container">
+                <div>
+                  <section className="content-header">Salary</section>
+                  <article className="content-body">
+                    ${jobListing?.salary}
+                  </article>
+                  <section className="content-header">Skills</section>
+                  <article className="content-body">
+                    {jobListing?.skills}
+                  </article>
+                </div>
+                <div>
+                  {match.visible && (
+                    <ConfettiExplosion
+                      force={0.8}
+                      duration={5000}
+                      particleCount={400}
+                      width={1500}
+                    />
+                  )}
+                  <section className="content-header">Location</section>
+                  <article className="content-body">
+                    {jobListing?.city}, {jobListing?.country}
+                  </article>
+                  <section className="content-header">Date Posted</section>
+                  <article className="content-body">
+                    {jobListing?.date_posted}
+                  </article>
+                </div>
               </div>
             </div>
+            <div className="action-buttons">
+              <button
+                className="not-interested"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  isNotInterested();
+                }}>
+                Not Interested
+              </button>
+              <button
+                className="interested"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  isInterested();
+                }}>
+                Interested
+              </button>
+            </div>
           </div>
-          <div className="action-buttons">
-            <button
-              className="not-interested"
-              onClick={(e) => {
-                e.stopPropagation();
-                isNotInterested();
-              }}>
-              Not Interested
+          <div hidden={!isHidden}>
+            <div className="card-body">
+              <img
+                className="no-more"
+                src={`${process.env.PUBLIC_URL}/NoMore.png`}
+              />
+            </div>
+          </div>
+          {/* resets database -- remove before production */}
+          <div className="reset-container">
+            <button className="star" onClick={resetDB} hidden={!isHidden}>
+              Reset
             </button>
-            <button
-              className="interested"
-              onClick={(e) => {
-                e.stopPropagation();
-                isInterested();
-              }}>
-              Interested
-            </button>
           </div>
-        </div>
-        <div hidden={!isHidden}>
-          <div className="card-body">
-            <img
-              className="no-more"
-              src={`${process.env.PUBLIC_URL}/NoMore.png`}
-            />
-          </div>
-        </div>
-        <div className={matchContainerClass}>
-          {match.visible && (
-            <ReactConfetti
-              width={window.innerWidth}
-              height={window.innerHeight}
-              numberOfPieces={150}
-            />
-          )}
+          <div className={matchContainerClass}>
+            {match.visible && (
+              <ReactConfetti
+                width={window.innerWidth}
+                height={window.innerHeight}
+                numberOfPieces={150}
+              />
+            )}
             <Match swipeRight={showMatch} avatar={avatar} />
+          </div>
         </div>
-      </div> }
+      )}
     </div>
   );
 }
