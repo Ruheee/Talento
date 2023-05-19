@@ -177,6 +177,17 @@ box-shadow: 2px 2px 0px #000000;
 
 .no-more {
   height: 100%;
+  opacity: 0;
+  animation: fade-in 1s ease-in-out forwards;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .match-popup {
