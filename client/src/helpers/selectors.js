@@ -8,7 +8,7 @@ export function getUnmatchedJobListings(jobListingsAPI, matchesAPI) {
       axios.get(matchesAPI).then((matches) => {
         const jobListingIDs = listings.data.map((list) => list.id);
         const matchedJobListingIDs = matches.data
-          .filter((match) => match.seeker_status === "true")
+          .filter((match) => match.seeker_status === "true" || match.not_interested === "true")
           .map((match) => match.job_listing_id);
 
         // extract only the job listings that have not been matched
@@ -32,7 +32,7 @@ export function getUnmatchedJobSeekers(jobSeekersAPI, matchesAPI) {
       axios.get(matchesAPI).then((matches) => {
         const jobSeekerIDs = seekers.data.map((seeker) => seeker.id);
         const matchedJobSeekerIDs = matches.data
-          .filter((match) => match.employer_status === "true")
+          .filter((match) => match.employer_status === "true" || match.not_interested === "true")
           .map((match) => match.job_seeker_id);
 
         // extract only the job listings that have not been matched

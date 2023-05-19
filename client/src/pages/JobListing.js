@@ -65,6 +65,19 @@ const JobListing = () => {
     );
   };
 
+  const isNotInterested = () => {
+    axios
+      .post(matchesAPI, {
+        // replace *_id with the user's id
+        job_seeker_id: null,
+        job_listing_id: jobListing?.id,
+        seeker_status: false,
+        employer_status: null,
+        not_interested: true
+      })
+      .then(() => { loadJobListings() });
+  };
+
   const isInterested = () => {
     setAvatar(jobListing?.employer_logo)
     axios
@@ -74,6 +87,7 @@ const JobListing = () => {
         job_listing_id: jobListing?.id,
         seeker_status: true,
         employer_status: null,
+        not_interested: false
       })
       .then(() => {
         axios.get(matchesAPI).then((response) => {
@@ -104,7 +118,7 @@ const JobListing = () => {
   const handlers = useSwipeable({
     onSwipedLeft: () => {
       console.log("Not Interested");
-      loadJobListings();
+      isNotInterested();
       setSwiping("left");
       setTimeout(() => setSwiping(""), 1000);
     },
@@ -212,7 +226,7 @@ const JobListing = () => {
               className="not-interested"
               onClick={(e) => {
                 e.stopPropagation();
-                loadJobListings();
+                isNotInterested();
               }}>
               Not Interested
             </button>
