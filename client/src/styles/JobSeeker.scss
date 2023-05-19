@@ -92,6 +92,7 @@
   box-sizing: border-box;
   /* Add mouse press effect */
   transition: all 0.2s;
+  width: 190px;
 }
 
 .not-interested:active {
@@ -111,6 +112,7 @@ box-shadow: 2px 2px 0px #000000;
   box-sizing: border-box;
   /* Add mouse press effect */
   transition: all 0.2s;
+  width: 190px;
 }
 
 .interested:active {
