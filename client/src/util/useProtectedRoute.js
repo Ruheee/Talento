@@ -1,9 +1,8 @@
-import { Navigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
-export default function useProtectedRoute(route) {
+export default function useProtectedRoute(protectRoute, redirectRoute) {
   const [cookies] = useCookies(["user"]);
   const isAuthenticatedByCookie = cookies["auth0.spvFR3hekTCoajKUwC1DinYBuimjO18z.is.authenticated"];
 
-  return isAuthenticatedByCookie ? route : <Navigate to="/login" replace />;
+  return isAuthenticatedByCookie ? protectRoute : redirectRoute;
 };
