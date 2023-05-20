@@ -8,20 +8,15 @@ import ReactConfetti from 'react-confetti';
 import ConfettiExplosion from "react-confetti-explosion";
 
 import Match from "../components/Match";
-import {
-  getUnmatchedJobListings,
-  randomIndex,
-} from "../helpers/selectors";
+import { getUnmatchedJobListings } from "../helpers/selectors";
 
 const JobListing = () => {
   const [state, setState] = useState({
     jobListings: {},
-    jobListingsIndex: 0,
   });
-
+  
   const [isLoading, setIsLoading] = useState(true);
   const [avatar, setAvatar] = useState(""); // new state for avatar
-
   const [match, setMatch] = useState({
     fadeOut: false,
     visible: false,
@@ -33,7 +28,7 @@ const JobListing = () => {
   const jobListingsAPI = "/api/job_listings";
   const matchesAPI = "/api/matches";
 
-  const jobListing = state.jobListings[state.jobListingsIndex];
+  const jobListing = state.jobListings[0];
 
   const isHidden = jobListing?.job_title === undefined && "hidden";
   const matchContainerClass = classNames(
@@ -58,15 +53,14 @@ const JobListing = () => {
       (unmatchedJobListing) => {
         setState((prev) => ({
           ...prev,
-          jobListings: unmatchedJobListing,
-          jobListingsIndex: randomIndex(unmatchedJobListing),
+          jobListings: unmatchedJobListing
         }));
       }
-    );
-  };
-
-  const isNotInterested = () => {
-    axios
+      );
+    };
+    
+    const isNotInterested = () => {
+      axios
       .post(matchesAPI, {
         // replace *_id with the user's id
         job_seeker_id: null,
@@ -75,44 +69,48 @@ const JobListing = () => {
         employer_status: null,
         not_interested: true
       })
-      .then(() => { loadJobListings() });
-  };
-
-  const isInterested = () => {
-    setAvatar(jobListing?.employer_logo)
-    axios
-      .post(matchesAPI, {
-        // replace *_id with the user's id
-        job_seeker_id: null,
-        job_listing_id: jobListing?.id,
-        seeker_status: true,
-        employer_status: null,
-        not_interested: false
-      })
-      .then(() => {
-        axios.get(matchesAPI).then((response) => {
-          const filtered = response.data.filter(
-            (match) => match.job_listing_id === jobListing?.id
-          );
-          const seeker_status = filtered[0].seeker_status;
-          const employer_status = filtered[0].employer_status;
-
-          // check if the job seeker and employer have both swiped right
-          // then show the match popup
-          //otherwise rerender the page and show the next job listing
-          if (seeker_status === "true" && employer_status === "true") {
-            showMatch();
-            loadJobListings();
-          } else {
-            loadJobListings();
-          }
+        .then(() => {
+          loadJobListings();
+        });
+      };
+      
+      const isInterested = () => {
+        setAvatar(jobListing?.employer_logo)
+        axios
+        .post(matchesAPI, {
+          // replace *_id with the user's id
+          job_seeker_id: null,
+          job_listing_id: jobListing?.id,
+          seeker_status: true,
+          employer_status: null,
+          not_interested: false
+        })
+        .then(() => {
+          axios.get(matchesAPI).then((response) => {
+            const filtered = response.data.filter(
+              (match) => match.job_listing_id === jobListing?.id
+              );
+              const seeker_status = filtered[0].seeker_status;
+              const employer_status = filtered[0].employer_status;
+              
+              // check if the job seeker and employer have both swiped right
+              // then show the match popup
+              //otherwise rerender the page and show the next job listing
+              if (seeker_status === "true" && employer_status === "true") {
+                showMatch();
+                loadJobListings();
+              } else {
+                loadJobListings();
+              }
         });
       });
   };
 
   // resets database -- remove before production
   const resetDB = () => {
-    axios.get("api/debug/reset").then(() => loadJobListings());
+    axios.get("api/debug/reset").then(() => {
+      loadJobListings();
+    });
   };
 
   const handlers = useSwipeable({
@@ -150,7 +148,6 @@ const JobListing = () => {
       setState((prev) => ({
         ...prev,
         jobListings: unmatchedJobListings,
-        jobListingsIndex: randomIndex(unmatchedJobListings),
       }));
       
       setIsLoading(false);

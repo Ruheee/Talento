@@ -8,15 +8,11 @@ import ReactConfetti from 'react-confetti';
 import ConfettiExplosion from "react-confetti-explosion";
 
 import Match from "../components/Match";
-import {
-  getUnmatchedJobSeekers,
-  randomIndex,
-} from "../helpers/selectors";
+import { getUnmatchedJobSeekers } from "../helpers/selectors";
 
 const JobSeeker = () => {
   const [state, setState] = useState({
     jobSeekers: {},
-    jobSeekersIndex: 0,
   });
 
   const [isLoading, setIsLoading] = useState(true);
@@ -33,7 +29,7 @@ const JobSeeker = () => {
   const jobSeekersAPI = "/api/job_seekers";
   const matchesAPI = "/api/matches";
 
-  const jobSeeker = state.jobSeekers[state.jobSeekersIndex];
+  const jobSeeker = state.jobSeekers[0];
 
   const isHidden = jobSeeker?.first_name === undefined && "hidden";
   const matchContainerClass = classNames(
@@ -58,8 +54,7 @@ const JobSeeker = () => {
       (unmatchedJobSeeker) => {
         setState((prev) => ({
           ...prev,
-          jobSeekers: unmatchedJobSeeker,
-          jobSeekersIndex: randomIndex(unmatchedJobSeeker),
+          jobSeekers: unmatchedJobSeeker
         }));
       }
     );
@@ -149,8 +144,7 @@ const JobSeeker = () => {
   
         setState((prev) => ({
           ...prev,
-          jobSeekers: unmatchedJobSeekers,
-          jobSeekersIndex: randomIndex(unmatchedJobSeekers),
+          jobSeekers: unmatchedJobSeekers
         }));
         
         setIsLoading(false);

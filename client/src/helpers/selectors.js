@@ -47,9 +47,3 @@ export function getUnmatchedJobSeekers(jobSeekersAPI, matchesAPI) {
     });
   });
 }
-
-export function randomIndex(array) {
-  // Shuffle the array before returning a random index to avoid the same job listing being shown consecutively
-  const shuffledArray = array.sort(() => Math.random() - 0.5);
-  return Math.floor(Math.random() * shuffledArray.length);
-}
