@@ -149,6 +149,43 @@
     width: 30px;
     height: 30px;
   }
+
+}
+
+
+  .not-interested {
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    background: #FE6D73;
+    border: 1px solid #000000;
+    box-shadow: 4px 4px 0px #000000;
+    border-radius: 4px;
+    padding: 14px 40px;
+    gap: 5px;
+    box-sizing: border-box;
+    /* Add mouse press effect */
+    transition: all 0.2s;
+    width: 190px;
+  }
+
+  .interested {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  background: #BCE784;
+  border: 1px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  border-radius: 4px;
+  padding: 14px 40px;
+  gap: 5px;
+  box-sizing: border-box;
+  /* Add mouse press effect */
+  transition: all 0.2s;
+  width: 190px;
+}
+
+.interested:active {
+  transform: translateY(2px);
+  box-shadow: 2px 2px 0px #000000;
 }
 
 .swipe-right {

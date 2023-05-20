@@ -106,6 +106,12 @@
   cursor: pointer;
 }
 
+.user-avatar {
+  border-radius: 100%;
+  width: 7%;
+  margin-right: 10px;
+}
+
 /* Mobile styles */
 @media (max-width: 768px) {
   .navbar {

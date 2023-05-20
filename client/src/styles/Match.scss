@@ -1,0 +1,78 @@
+.match-container {
+  backdrop-filter: blur(10px); /* Apply a blur effect to the background */
+  background-color: rgba(45, 45, 45, 0.5); /* Set a semi-transparent background color */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.match-header {
+  font-family: 'Raleway', sans-serif;
+  font-size: 40px;
+  color:#FF6363;
+}
+
+.match-subheader {
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  color: #FCFF7E;
+}
+
+.avatar-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.match-avatars {
+  background-color: white;
+  border-radius: 100%;
+  border: 3px solid rgb(24, 24, 24);
+  margin: 30px 20px 50px 20px;
+  width: 35%;
+}
+
+.send-message {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  background: #FE6D73;
+  width: 200px;
+  border: 1px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  border-radius: 4px;
+  padding: 14px 40px;
+  margin: 10px;
+  gap: 5px;
+  box-sizing: border-box;
+  /* Add mouse press effect */
+  transition: all 0.2s;
+}
+
+.send-message:active {
+transform: translateY(2px);
+box-shadow: 2px 2px 0px #000000;
+}
+
+.keep-swiping {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  background: #BCE784;
+  width: 200px;
+  border: 1px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  border-radius: 4px;
+  padding: 14px 40px;
+  margin: 10px;
+  gap: 5px;
+  box-sizing: border-box;
+  /* Add mouse press effect */
+  transition: all 0.2s;
+}
+
+.keep-swiping:active {
+  transform: translateY(2px);
+  box-shadow: 2px 2;
+  box-shadow: 2px 2px 0px #000000;
+}
