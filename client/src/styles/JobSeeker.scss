@@ -3,41 +3,78 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  
   min-height: 100vh;
-  padding-top: 100px; /* Add padding to make space for the fixed navbar */
+  padding-top: 100px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Align items to the center of the page */
-  justify-content: center; /* Center the content vertically */
-  padding-left: 2%; /* Add some space from the left edge of the page */
+  align-items: center;
+  justify-content: flex-start; 
+  padding-left: 2%;
+  transition: transform 0.3s ease-out;
+  position: relative;
 }
 
 .card-body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  
   width: 452px;
   height: 538px;
-  
   background: #FFFFFF;
   border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  transform-origin: center bottom;
+  cursor: pointer;
+  margin-bottom: 30px;
+  --scale: 1;
+  --translateX: 0px;
+  transform: translateX(var(--translateX)) scale(var(--scale));
+  transition: transform 0.3s ease-in-out;
 
-  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.55);
+  &:active {
+    transform: scale(0.98);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23);
+    cursor: grabbing;
+  }
 
+  &.swiping-right, &.swiping-left {
+    opacity: 0;
+    transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.8s ease;
+  }
+
+  &.swiping-right {
+    transform: translateX(30%) rotate(20deg);
+  }
+
+  &.swiping-left {
+    transform: translateX(-30%) rotate(-20deg);
+  }
+
+  &.enlarge {
+    transform: scale(1.2);
+    transition: transform 0.3s ease-in-out;
+    z-index: 2;
+  }
+
+  user-select: none;
+}
+
+.profile {
+  padding-top: 10px;
+  pointer-events: none;
 }
 
 .content-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: stretch;
   width: inherit;
 }
 
-.profile {
-  padding-top: 10px
+.content-container > div {
+  flex-grow: 1;
 }
 
 .subheader {
@@ -45,7 +82,15 @@
   font-weight: 900;
   font-size: 10px;
   align-self: flex-start;
-  padding: 30px 25px 10px 25px;
+  padding: 20px 25px 10px 25px;
+}
+
+.content-body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 .seeker-name {
@@ -56,76 +101,60 @@
 
 .seeker-location {
   font-family: 'Poppins', sans-serif;
-
   font-size: 16px;
+  color: #4a4a4a;
 }
 
-.content-body {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400;
-  font-size: 10px;
-  padding: 0 25px 0 25px;
-  text-align: left;
-}
-
-.action-buttons {
-  padding: 25px;
+.skills {
   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: 0px 20px;
+}
+
+.skill-chip {
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 15px;
+  background-color: #a1cdff;
+  color: #4a4a4a;
+  font-size: 12px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
+  padding: 20px 30px;
 }
 
-.not-interested {
-  font-family: 'Lato', sans-serif;
-  font-size: 14px;
-  background: #FE6D73;
-  border: 1px solid #000000;
-  box-shadow: 4px 4px 0px #000000;
-  border-radius: 4px;
-  padding: 14px 40px;
-  gap: 5px;
-  box-sizing: border-box;
-  /* Add mouse press effect */
-  transition: all 0.2s;
+.button {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out;
+
+  &:active {
+    transform: scale(0.9);
+  }
+
+  img {
+    width: 30px;
+    height: 30px;
+  }
 }
 
-.not-interested:active {
-transform: translateY(2px);
-box-shadow: 2px 2px 0px #000000;
+.swipe-right {
+  color: #4caf50;
 }
 
-.interested {
-  font-family: 'Lato', sans-serif;
-  font-size: 14px;
-  background: #BCE784;
-  border: 1px solid #000000;
-  box-shadow: 4px 4px 0px #000000;
-  border-radius: 4px;
-  padding: 14px 40px;
-  gap: 5px;
-  box-sizing: border-box;
-  /* Add mouse press effect */
-  transition: all 0.2s;
-}
-
-.interested:active {
-  transform: translateY(2px);
-  box-shadow: 2px 2px 0px #000000;
-}
-
-.star {
-  color: #fffb00;
-  background: #5F7470;
-  border: 1px solid #000000;
-  box-shadow: 4px 4px 0px #000000;
-  border-radius: 4px;
-  box-sizing: border-box;
-  padding: 14px 15px;
-  gap: 5px;
-  /* Add mouse press effect */
-  transition: all 0.2s;
-}
-
-.star:active {
-  transform: translateY(2px);
-  box-shadow: 2px 2px 0px #000000;
+.swipe-left {
+  color: #f44336;
 }

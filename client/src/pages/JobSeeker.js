@@ -1,9 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classNames from "classnames";
+import { useSwipeable } from 'react-swipeable';
 import '../styles/JobSeeker.scss';
-  
+
 const JobSeeker = (props) => {
   let hiddenClass = classNames({ hidden: props.data?.first_name === undefined });
+
+  const [swiping, setSwiping] = useState('');
+  const [enlarged, setEnlarged] = useState(false);
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => {
+      console.log('Not Interested');
+      props.notInterested();
+      setSwiping('left');
+      setTimeout(() => setSwiping(''), 1000);
+    },
+    onSwipedRight: () => {
+      console.log('Interested');
+      props.interested();
+      setSwiping('right');
+      setTimeout(() => setSwiping(''), 1000);
+    },
+    preventDefaultTouchmoveEvent: true,
+    trackMouse: true
+  });
+
+  const handleClick = () => {
+    setEnlarged(!enlarged);
+  };
+
   return (
     <div
       className="card-container"
@@ -11,15 +37,17 @@ const JobSeeker = (props) => {
         backgroundImage: `url(${process.env.PUBLIC_URL}/Background.png)`,
       }}>
       
-      {/* resets database -- remove before production */}
       <button className="star" onClick={props.reset}>
         Reset
       </button>
       <br />
 
-      {/* show no more card if there are no more cards to show or if first_name is undefined */}
       <div hidden={hiddenClass}>
-        <div className="card-body">
+        <div 
+          className={`card-body ${swiping === 'right' ? 'swiping-right' : swiping === 'left' ? 'swiping-left' : ''} ${enlarged ? 'enlarge' : ''}`}
+          {...handlers} 
+          onClick={handleClick}
+        >
           <img
             className="profile"
             src={props.data?.avatar}
@@ -41,22 +69,21 @@ const JobSeeker = (props) => {
             {props.data?.resume}
             </article>
           </div>
-        </div>
 
-        <div className="action-buttons">
-          <button className="not-interested" onClick={props.notInterested}>
-            Not Interested
-          </button>
-          <button className="star">
-            <i className="fas fa-star fa-lg"></i>
-          </button>
-          <button className="interested" onClick={props.interested}>
-            Interested
-          </button>
+          <div className="card-action-buttons">
+            <button className="not-interested" onClick={props.notInterested}>
+              Not Interested
+            </button>
+            <button className="star">
+              <i className="fas fa-star fa-lg"></i>
+            </button>
+            <button className="interested" onClick={props.interested}>
+              Interested
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* show no more card if there are no more cards to show or if first_name is undefined */}
       <div hidden={!hiddenClass}>
         <div className="card-body">
           <img
