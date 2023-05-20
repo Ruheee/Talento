@@ -202,7 +202,7 @@ const JobSeeker = () => {
               </div>
             </div>
 
-            <div className="action-buttons">
+            <div className="card-action-buttons">
               <button
                 className="not-interested"
                 onClick={(e) => {

@@ -80,6 +80,12 @@
   color: #C1C1C1;
 }
 
+.avatar {
+  border-radius: 100%;
+  width: 10%;
+  margin-right: 10px;
+}
+
 .login-button {
   font-family: 'Outfit', sans-serif;
   display: flex;
