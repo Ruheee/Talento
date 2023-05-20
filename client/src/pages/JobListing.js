@@ -158,9 +158,8 @@ const JobListing = () => {
 
   return (
     <div>
-      {isLoading ? (
-        <div>{/*insert progress indicator here*/}</div>
-      ) : (
+      {isLoading ? <div>{/*insert progress indicator here*/}</div>
+        : 
         <div
           className="card-container"
           style={{
@@ -239,7 +238,7 @@ const JobListing = () => {
                 Interested
               </button>
             </div>
-          </div>
+          </div> 
           <div hidden={!isHidden}>
             <div className="card-body">
               <img
@@ -264,8 +263,7 @@ const JobListing = () => {
             )}
             <Match swipeRight={showMatch} avatar={avatar} />
           </div>
-        </div>
-      )}
+        </div>}
     </div>
   );
 }
