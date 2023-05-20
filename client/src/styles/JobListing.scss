@@ -115,7 +115,10 @@
 }
 
 .reset-container {
+  display: flex;
+  justify-content: center;
   padding: 25px;
+  margin-bottom: 50px;
 }
 
 .not-interested {
@@ -209,8 +212,4 @@ box-shadow: 2px 2px 0px #000000;
 
 .hidden {
   visibility: hidden;
-}
-
-.card_body {
-  margin-bottom: 30px; // Added margin to create space for buttons. <- remove
 }
