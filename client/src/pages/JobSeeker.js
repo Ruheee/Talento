@@ -230,13 +230,13 @@ const JobSeeker = () => {
                 src={`${process.env.PUBLIC_URL}/NoMore.png`}
               />
             </div>
-          </div>
-          {/* resets database -- remove before production */}
           <div className="reset-container">
             <button className="star" onClick={resetDB} hidden={!isHidden}>
               Reset
             </button>
           </div>
+          </div>
+          {/* resets database -- remove before production */}
           <div className={matchContainerClass}>
             {match.visible && (
               <ReactConfetti
