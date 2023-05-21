@@ -18,8 +18,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 452px;
-  height: 538px;
+  // width: 452px;
+  // height: 538px;
   background: #FFFFFF;
   border-radius: 20px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -30,6 +30,7 @@
   --translateX: 0px;
   transform: translateX(var(--translateX)) scale(var(--scale));
   transition: transform 0.3s ease-in-out;
+  padding: 25px;
 
   &:active {
     transform: scale(0.98);
