@@ -134,7 +134,7 @@ const JobListing = () => {
 
   const handleClick = () => {
     // new handler for click event
-    setEnlarged(!enlarged);
+    // setEnlarged(!enlarged);
   };
 
   // GET request to the server to retrieve the job listings on page load
@@ -185,6 +185,7 @@ const JobListing = () => {
               <header className="company-name">
                 {jobListing?.employer_name}
               </header>
+              <br />
               <section className="content-header">About the job</section>
               <article className="content-body">
                 {jobListing?.job_description}
@@ -195,6 +196,7 @@ const JobListing = () => {
                   <article className="content-body">
                     ${jobListing?.salary}
                   </article>
+                  <br />
                   <section className="content-header">Skills</section>
                   <article className="content-body">
                     {jobListing?.skills}
@@ -213,6 +215,7 @@ const JobListing = () => {
                   <article className="content-body">
                     {jobListing?.city}, {jobListing?.country}
                   </article>
+                  <br />
                   <section className="content-header">Date Posted</section>
                   <article className="content-body">
                     {jobListing?.date_posted}
