@@ -182,8 +182,12 @@ const JobSeeker = () => {
               <header className="seeker-location">
                 {jobSeeker?.city}, {jobSeeker?.country}
               </header>
-              <section className="subheader">About Me</section>
               <div className="content-container">
+              <section className="subheader">About Me</section>
+                <article className="content-body">
+                  {jobSeeker?.about_me}
+                  </article>
+                  <br />
                 {match.visible && (
                   <ConfettiExplosion
                     force={0.8}
@@ -192,17 +196,15 @@ const JobSeeker = () => {
                     width={1500}
                   />
                 )}
-                <article className="content-body">
-                  {jobSeeker?.about_me}
-                </article>
                 <section className="subheader">Skills</section>
                 <article className="content-body">{jobSeeker?.skills}</article>
+                <br />
                 <section className="subheader">Resume</section>
                 <article className="content-body">{jobSeeker?.resume}</article>
               </div>
             </div>
 
-            <div className="card-action-buttons">
+            <div className="action-buttons">
               <button
                 className="not-interested"
                 onClick={(e) => {
