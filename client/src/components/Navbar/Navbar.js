@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
   const { user, isAuthenticated } = useAuth0();
   const { email, picture } = user || {};
-
+  console.log(user.picture)
   return (
     <div className="navbar">
       <div className="title-container">
