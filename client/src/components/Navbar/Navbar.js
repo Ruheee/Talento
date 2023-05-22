@@ -14,9 +14,9 @@ const Navbar = () => {
       <div className="title-container">
         <a href="/" className="title">Talento</a>
       </div>
-      {/* <div className="search-container">
+      <div className="search-container">
         <input type="text" className="search-input" placeholder="Search..." />
-      </div> */}
+      </div>
       <div className="buttons-container">
         <a href="/job_listing" className="nav-link">Find Jobs</a>
         <a href="/messages" className="nav-link">Messages</a>
