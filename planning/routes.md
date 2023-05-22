@@ -48,7 +48,8 @@ DELETE /employers/:id/favourites/:favourite_id - Delete a specific favourite fro
 
 Matches
 ------------
-POST /match/- Add new match if employer and jobseeker isMatch? === true
+POST /match/- Add new match if job_seeker_id or employer_id does not exist in the match table
+PUT /match/:id - Update seeker_status or employer_status to true if either one decides to match
 DELETE /match/:id - If either employer or job seeker decides to unmatch
 
 GET /match/match_id/job_seekers/:id - View current matches on job seeker end

@@ -72,6 +72,9 @@ CREATE TABLE matches (
   job_seeker_id INTEGER REFERENCES job_seekers(id) ON DELETE CASCADE,
   job_listing_id INTEGER REFERENCES job_listings(id) ON DELETE CASCADE,
   seeker_status VARCHAR(255),
-  employer_status VARCHAR(255)
+  employer_status VARCHAR(255),
+  not_interested VARCHAR(255),
+  CONSTRAINT job_listing_id_unique_constraint UNIQUE (job_listing_id),
+  CONSTRAINT job_seeker_id_unique_constraint UNIQUE (job_seeker_id)
 );
 

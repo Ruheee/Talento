@@ -130,8 +130,6 @@ export default function Messages() {
 
   return (
     <div>
-      <Navbar />
-      {!isAuthenticated && <Login />}
       {isAuthenticated && (
         <section className="messages--view--container">
           <aside className="match--message--list">
