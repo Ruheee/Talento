@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar/Navbar";
 import "../styles/Messages.scss";
 import "../styles/index.scss";
 import MatchList from "../components/MatchList";
-import Login from "../pages/Login";
+import Login from "../pages/LogIn";
 import MessageList from "../components/MessageList";
 
 // Import from react library
@@ -25,6 +25,8 @@ export default function Messages() {
   const [isTrue, setIsTrue] = useState(false);
   const [newMessage, setNewMessage] = useState(false);
   const [userID, setUserID] = useState("0");
+
+  const avatar = `${process.env.PUBLIC_URL}/avatar.jpg`;
 
   console.log(newMessage)
 
@@ -186,7 +188,7 @@ export default function Messages() {
                     return (
                       <div id="sender_message">
                         <div className="message--container sender_msg">
-                          <img src={user.picture} alt={user.name} />
+                          <img src={avatar} alt={user.name} />
                           <div className="username--message">
                             <p>
                               {(message.user_id === "1" && "Seeker") ||
