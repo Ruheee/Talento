@@ -2,13 +2,11 @@ import React from 'react';
 import './Navbar.css';
 import { useAuth0 } from "@auth0/auth0-react";
 import Logout from '../LogoutBtn';
-import { Link } from 'react-router-dom';
 
 
 const Navbar = () => {
   const { user, isAuthenticated } = useAuth0();
   const { email, picture } = user || {};
-  console.log(user.picture)
   return (
     <div className="navbar">
       <div className="title-container">
