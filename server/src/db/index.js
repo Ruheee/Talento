@@ -3,7 +3,7 @@ const pg = require("pg");
 const client = new pg.Client({
   host: process.env.PGHOST || 'localhost',
   port: process.env.PGPORT || 5432,
-  database: process.env.PGDATABASE || 'talentodev',
+  database: process.env.PGDATABASE || 'talento_development',
   user: process.env.PGUSER,
   password: process.env.PGPASSWORD,
 });
