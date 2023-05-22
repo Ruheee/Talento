@@ -20,7 +20,8 @@ const Navbar = () => {
       <div className="buttons-container">
         <a href="/job_listing" className="nav-link">Find Jobs</a>
         <a href="/messages" className="nav-link">Messages</a>
-        <img src={avatar} className='user-avatar'/>
+        <a href="/resume" className="nav-link">My Resume</a>
+        {isAuthenticated && <img src={avatar} className='user-avatar' />}
         <span className="nav-link">{email}</span>
         {!isAuthenticated ? <a href="/login" className="login-button">Login</a> : <Logout />}
       </div>

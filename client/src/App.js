@@ -6,9 +6,10 @@ import Navbar from "./components/Navbar/Navbar";
 import HomePage from "./pages/HomePage";
 import JobListing from './pages/JobListing';
 import JobSeeker from './pages/JobSeeker';
-import Login from "./pages/Login";
+import Login from "./pages/LogIn";
 import SignUp from "./pages/SignUp";
 import Messages from "./pages/Messages";
+import Resume from "./components/Resume/Resume";
 import useProtectedRoute from "./util/useProtectedRoute";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path="/login" element={useProtectedRoute(rootRoute, <Login />)} />
         <Route path="/signup" element={useProtectedRoute(rootRoute, <SignUp />)} />
         <Route path="/messages" element={useProtectedRoute(<Messages />, loginRoute)} />
+        <Route path="/resume" element={useProtectedRoute(<Resume />, loginRoute)} />
       </Routes>
     </Router>
   );

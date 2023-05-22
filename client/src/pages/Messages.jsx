@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar/Navbar";
 import "../styles/Messages.scss";
 import "../styles/index.scss";
 import MatchList from "../components/MatchList";
-import Login from "../pages/Login";
+import Login from "../pages/LogIn";
 import MessageList from "../components/MessageList";
 
 // Import from react library
