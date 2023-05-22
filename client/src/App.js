@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar/Navbar";
 import HomePage from "./pages/HomePage";
 import JobListing from './pages/JobListing';
 import JobSeeker from './pages/JobSeeker';
-import Login from "./pages/Login";
+import Login from "./pages/LogIn";
 import SignUp from "./pages/SignUp";
 import Messages from "./pages/Messages";
 import useProtectedRoute from "./util/useProtectedRoute";

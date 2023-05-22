@@ -17,7 +17,7 @@ const Match = (props) => {
     });
   };
   const { user } = useAuth0();
-  const { picture } = user || {};
+  const avatar = `${process.env.PUBLIC_URL}/avatar.jpg`;
 
   useEffect(() => {
     axios.get("/api/matches").then((res) => {
@@ -30,7 +30,7 @@ const Match = (props) => {
       <header className="match-header">ITS A MATCH</header>
       <p className="match-subheader">Send your match a message</p>
       <div className="avatar-container">
-        <img src={picture} className="match-avatars"/>
+        <img src={avatar} className="match-avatars"/>
         <img src={props.avatar} className="match-avatars" />  
       </div>
       <button className="send-message" onClick={event => {

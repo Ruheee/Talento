@@ -7,8 +7,9 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const { user, isAuthenticated } = useAuth0();
-  const { email, picture } = user || {};
-  console.log(user.picture)
+  const { email } = user || {};
+  const avatar = `${process.env.PUBLIC_URL}/avatar.jpg`;
+
   return (
     <div className="navbar">
       <div className="title-container">
@@ -20,7 +21,7 @@ const Navbar = () => {
       <div className="buttons-container">
         <a href="/job_listing" className="nav-link">Find Jobs</a>
         <a href="/messages" className="nav-link">Messages</a>
-        <img src={picture} className='user-avatar'/>
+        <img src={avatar} className='user-avatar'/>
         <span className="nav-link">{email}</span>
         {!isAuthenticated ? <a href="/login" className="login-button">Login</a> : <Logout />}
       </div>
