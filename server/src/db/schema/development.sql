@@ -16,12 +16,6 @@ insert into employers (id, career_id, email, password, company_name, company_log
 insert into employers (id, career_id, email, password, company_name, company_logo, company_description, city, country, social_media) values (4, 1, 'oestevez3@hao123.com', 'DuYCimz', 'Cogidoo', 'https://robohash.org/aliasevenietsunt.png?size=50x50&set=set1', 'In sagittis dui vel nisl. Duis ac nibh.', 'Muyudian', 'China', 'https://dedecms.com');
 insert into employers (id, career_id, email, password, company_name, company_logo, company_description, city, country, social_media) values (5, 3, 'apeert4@sun.com', 'Kx1FdVxP', 'Browsezoom', 'https://robohash.org/uttotamaperiam.png?size=50x50&set=set1', 'Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.', 'Anchorage', 'United States', 'https://marketwatch.com');
 
-insert into messages (id, job_seeker_id, employer_id, message, time_stamp) values (1, 5, 1, 'Aliquam non mauris. Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet.', '2023-05-05 19:02:24');
-insert into messages (id, job_seeker_id, employer_id, message, time_stamp) values (2, 4, 5, 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.', '2023-05-06 02:36:40');
-insert into messages (id, job_seeker_id, employer_id, message, time_stamp) values (3, 4, 2, 'Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.', '2023-05-05 12:32:09');
-insert into messages (id, job_seeker_id, employer_id, message, time_stamp) values (4, 4, 5, 'Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.', '2023-05-04 09:04:23');
-insert into messages (id, job_seeker_id, employer_id, message, time_stamp) values (5, 5, 3, 'Integer ac neque. Duis bibendum. Morbi non quam nec dui luctus rutrum.', '2023-05-04 04:52:35');
-
 insert into job_listings (id, employer_id, career_id, job_title, job_description, salary, city, country, skills, date_posted, isClosed) values (1, 3, 2, 'Analog Circuit Design manager', 'Aenean auctor gravida sem. Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo.', 22253, 'Bayanaūyl', 'Kazakhstan', 'Lyris ListManager', '01-05-2023', true);
 insert into job_listings (id, employer_id, career_id, job_title, job_description, salary, city, country, skills, date_posted, isClosed) values (2, 1, 4, 'Research Assistant IV', 'Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante.', 79717, 'Lófos', 'Greece', 'Web Analytics', '03-05-2023', false);
 insert into job_listings (id, employer_id, career_id, job_title, job_description, salary, city, country, skills, date_posted, isClosed) values (3, 5, 3, 'Administrative Officer', 'Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus.', 50306, 'Huari', 'Peru', 'Distributed Systems', '04-05-2023', false);
@@ -34,8 +28,8 @@ insert into favourites (id, job_seeker_id, job_listing_id) values (3, 4, 2);
 insert into favourites (id, job_seeker_id, job_listing_id) values (4, 1, 1);
 insert into favourites (id, job_seeker_id, job_listing_id) values (5, 1, 5);
 
-insert into matches (id, job_listing_id, job_seeker_id, seeker_status, employer_status) values (1, 4, 5, true, false);
-insert into matches (id, job_listing_id, job_seeker_id, seeker_status, employer_status) values (2, 4, 4, true, false);
-insert into matches (id, job_listing_id, job_seeker_id, seeker_status, employer_status) values (3, 4, 3, false, false);
+insert into matches (id, job_listing_id, job_seeker_id, seeker_status, employer_status) values (1, 4, 5, true, true);
+insert into matches (id, job_listing_id, job_seeker_id, seeker_status, employer_status) values (2, 4, 4, true, true);
+insert into matches (id, job_listing_id, job_seeker_id, seeker_status, employer_status) values (3, 4, 3, true, true);
 insert into matches (id, job_listing_id, job_seeker_id, seeker_status, employer_status) values (4, 1, 1, true, true);
-insert into matches (id, job_listing_id, job_seeker_id, seeker_status, employer_status) values (5, 5, 2, false, false);
+insert into matches (id, job_listing_id, job_seeker_id, seeker_status, employer_status) values (5, 5, 2, true, true);

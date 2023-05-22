@@ -42,9 +42,8 @@ CREATE TABLE employers (
 
 CREATE TABLE messages (
   id SERIAL PRIMARY KEY NOT NULL,
-  job_seeker_id INTEGER REFERENCES job_seekers(id) ON DELETE CASCADE,
-  employer_id INTEGER REFERENCES employers(id) ON DELETE CASCADE,
-  message TEXT NOT NULL,
+  user_id VARCHAR(255) NOT NULL, 
+  message TEXT,  
   time_stamp TIMESTAMP DEFAULT NOW()
 );
 
