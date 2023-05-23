@@ -26,6 +26,8 @@ export default function Messages() {
   const [newMessage, setNewMessage] = useState(false);
   const [userID, setUserID] = useState("0");
 
+  const avatar = `${process.env.PUBLIC_URL}/avatar.jpg`;
+
   console.log(newMessage)
 
   useEffect(() => {
@@ -45,6 +47,7 @@ export default function Messages() {
     axios.get("/api/matches").then((res) => {
       setRoom(res.data);
     });
+    setIsTrue(false);
   }, []);
 
   const messagePopUp = () => {
@@ -93,7 +96,7 @@ export default function Messages() {
     //     console.log("erroe", error);
     //   });
   };
-  
+
   useEffect(() => {
     // Receive message event
     axios.get("/api/messages").then((res) => {
@@ -128,6 +131,14 @@ export default function Messages() {
     setInput("");
   };
 
+  useEffect(() => {
+    if (messages.length === 1) {
+      setTimeout(() => {
+        setNewMessage(true);
+      }, 3000);
+    }
+  }, [messages])
+  
   return (
     <div>
       {isAuthenticated && (
@@ -147,13 +158,13 @@ export default function Messages() {
                   <div className="name--message">
                     <p>Apple</p>
                     <article>
-                      We loved your resume! Wed love to chat with you more and
+                      We loved your resume! We'd love to chat with you more and
                       set up an interview.
                     </article>
                   </div>
                 </div>
               )}
-              <div className="messanger--info" onClick={messagePopUp}>
+              {/* <div className="messanger--info" onClick={messagePopUp}>
                 <img src="Ronaldo.jpeg" alt="user--avatar" />
                 <div className="name--message">
                   <p>Jimmy</p>
@@ -162,7 +173,7 @@ export default function Messages() {
                     Tempora, numquam.
                   </article>
                 </div>
-              </div>
+              </div> */}
             </div>
           </aside>
           <div className="message--input--container">
@@ -186,33 +197,28 @@ export default function Messages() {
                     return (
                       <div id="sender_message">
                         <div className="message--container sender_msg">
-                          <img src={user.picture} alt={user.name} />
+                          <img src={avatar} alt={user.name} />
                           <div className="username--message">
                             <p>
                               {(message.user_id === "1" && "Seeker") ||
                                 (message.user_id === "2" && "Employer")}
                             </p>
                             <div key={index} className="msg">
-                              
                               {message.message}
                             </div>
                           </div>
                         </div>
-                        
                       </div>
                     );
                   }
-                  
                 })}
               {newMessage && (
                 <div id="sender_message">
                   <div className="message--container sender_msg">
                     <img src="Apple.png" alt={user.name} />
                     <div className="username--message">
-                      <p>
-                        Apple
-                      </p>
-                      <div className="msg">          
+                      <p>Apple</p>
+                      <div className="msg">
                         How does 8AM Tuesday June 4th Sound?
                       </div>
                     </div>
