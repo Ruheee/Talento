@@ -33,18 +33,18 @@ export default function MatchList(props) {
             <p>Facebook</p>
           </div>
         </div>
-        <div className="matches--list">
+        {/* <div className="matches--list">
           <div className="match--avatar--name" onClick={() => { return props.joinRoom(), props.setTrue()}}>
             <img src="Google.png" alt="Diogo avatar" />
             <p>Google</p>
           </div>
-        </div>
-        <div className="matches--list">
+        </div> */}
+        {/* <div className="matches--list">
           <div className="match--avatar--name" onClick={() => { return props.joinRoom(), props.setTrue()}}>
             <img src="Royal-Bank-of-Canada-Logo.png" alt="Diogo avatar" />
             <p>RBC</p>
           </div>
-        </div>
+        </div> */}
         <div className="matches--list">
           <div className="match--avatar--name" onClick={() => { return props.joinRoom(), props.setTrue()}}>
             <img src="lighthouselabs.jpeg" alt="Diogo avatar" />
