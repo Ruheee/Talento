@@ -5,7 +5,7 @@ import Logout from '../LogoutBtn';
 
 
 const Navbar = () => {
-  const { user, isAuthenticated } = useAuth0();
+  const { user, isAuthenticated, loginWithRedirect } = useAuth0();
   const { email } = user || {};
   const avatar = `${process.env.PUBLIC_URL}/avatar.jpg`;
 
@@ -22,8 +22,9 @@ const Navbar = () => {
         <a href="/messages" className="nav-link">Messages</a>
         <a href="/resume" className="nav-link">My Resume</a>
         {isAuthenticated && <img src={avatar} className='user-avatar' />}
-        <span className="nav-link">{email}</span>
+        {/* <span className="nav-link">{email}</span> */}
         {!isAuthenticated ? <a href="/login" className="login-button">Login</a> : <Logout />}
+        {/* {!isAuthenticated ? <button onClick={loginWithRedirect} className='login-button'>Login</button> : <Logout />} */}
       </div>
     </div>
   );
