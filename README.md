@@ -60,8 +60,8 @@ To install the necessary packages, follow these steps:
 
 ## 👨‍💻 Creators
 
-- **Creator 1**: Diogo Ramos - Their Email - https://www.linkedin.com/in/diogomiguelramos/
-- **Creator 2**: Rui Dantas - Their Email - https://www.linkedin.com/in/rui-dantas-043078248/?originalSubdomain=ca
+- **Creator 1**: Diogo Ramos - Diogo.ramos@me.com - https://www.linkedin.com/in/diogomiguelramos/
+- **Creator 2**: Rui Dantas - Ruidantas55@gmail.com - https://www.linkedin.com/in/rui-dantas-043078248/?originalSubdomain=ca
 - **Creator 3**: Jerome Lagbas - jeromelagbas@gmail.com - https://www.linkedin.com/in/jeromealmir/?trk=public_profile_browsemap&originalSubdomain=ca
 
 ## 📞 Contact
