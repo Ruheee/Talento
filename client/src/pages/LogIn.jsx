@@ -1,4 +1,4 @@
-import Login from "../components/LogInBtn";
+import Login from "../components/LoginBtn";
 import "../styles/LogInView.scss";
 import "../styles/index.scss";
 
