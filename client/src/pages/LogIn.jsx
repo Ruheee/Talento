@@ -1,4 +1,4 @@
-import Login from "../components/LoginBtn";
+import Login from "../components/LogInBtn";
 import "../styles/LogInView.scss";
 import "../styles/index.scss";
 
@@ -11,7 +11,7 @@ export default function LogIn() {
       <input type="text" placeholder="Username, email or phone number" />
       <input type="text" placeholder="Password" />
       <span>Forgot Password?</span>
-      <button className="register---btn">Login</button>
+      <button className="login---btn">Login</button>
       <span>Sign up</span>
       <div className="signUpWithGoogle">
         <img src="left_line.png" alt="line" />
